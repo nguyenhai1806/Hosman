@@ -44,12 +44,13 @@ namespace hosman_api.Controllers
             try
             {
                 QlNhomNguoiDung oldItem = QlNhomNguoiDungDAL.Instance.GetItemByID(maNhom);
-
+                if (QlNhomNguoiDungDAL.Instance.ItemExistsByName(itemVM.TenNhom))
+                    return BadRequest("Ten nhom da ton tai");
                 if (oldItem != null)
                 {
                     oldItem.TenNhom = itemVM.TenNhom;
                     oldItem.GhiChu = itemVM.GhiChu;
-
+                    QlNhomNguoiDungDAL.Instance.UpdateItem(oldItem);
                     return Ok();
                 }
                 else
@@ -59,6 +60,11 @@ namespace hosman_api.Controllers
             {
                 return BadRequest();
             }
+        }
+        public IActionResult ItemExistsByID(string maNhom)
+        {
+            if (QlNhomNguoiDungDAL.Instance.ItemExistsByID(maNhom))
+                return BadRequest("Ten nhom da ton tai");
         }
     }
 }

@@ -47,6 +47,11 @@ namespace hosman_api.DAL
         {
             return dbContext.QlNhomNguoiDungs.Any(e => e.TenNhom == tenNhom);
         }
+        public bool UpdateItem(QlNhomNguoiDung updateItem)
+        {
+            dbContext.QlNhomNguoiDungs.Update(updateItem);
+            return dbContext.SaveChanges();
+        }
         public bool RemoveItem(string maNhom)
         {
             QlNhomNguoiDung qlNhomNguoiDung = dbContext.QlNhomNguoiDungs.Where(x => x.MaNhom.Equals(maNhom)).FirstOrDefault();
