@@ -38,16 +38,29 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
-        [HttpGet("{id}")]
+        [HttpGet("{maNhom}")]
         public IActionResult GetItemByID(string maNhom)
         {
             try
             {
-
                 QlNhomNguoiDung qlNhomNguoiDung = QlNhomNguoiDungDAL.Instance.GetItemByID(maNhom);
-                if (qlNhomNguoiDung == null) { return NotFound(); }
+                return qlNhomNguoiDung == null ? NotFound() : Ok(qlNhomNguoiDung);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpDelete("{maNhom}")]
+        public IActionResult DeteleItem(string maNhom)
+        {
+            try
+            {
+                QlNhomNguoiDung qlNhomNguoiDung = QlNhomNguoiDungDAL.Instance.GetItemByID(maNhom);
+                if (qlNhomNguoiDung == null)
+                    return QlNhomNguoiDungDAL.Instance.RemoveItem(maNhom) ? Ok() : BadRequest();
                 else
-                    return Ok(qlNhomNguoiDung);
+                    return NotFound();
             }
             catch (Exception)
             {
