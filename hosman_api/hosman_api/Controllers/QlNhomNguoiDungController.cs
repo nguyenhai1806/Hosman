@@ -27,7 +27,7 @@ namespace hosman_api.Controllers
             }
         }
         [HttpGet]
-        public IActionResult GetAllItem()
+        public IActionResult GetAllItems()
         {
             try
             {
@@ -38,22 +38,16 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
-        [HttpPut]
-        public IActionResult PutItem(string maNhom, QlNhomNguoiDungVM itemVM)
+        [HttpGet("{id}")]
+        public IActionResult GetItemByID(string maNhom)
         {
             try
             {
-                QlNhomNguoiDung oldItem = QlNhomNguoiDungDAL.Instance.GetItemByID(maNhom);
 
-                if (oldItem != null)
-                {
-                    oldItem.TenNhom = itemVM.TenNhom;
-                    oldItem.GhiChu = itemVM.GhiChu;
-
-                    return Ok();
-                }
+                QlNhomNguoiDung qlNhomNguoiDung = QlNhomNguoiDungDAL.Instance.GetItemByID(maNhom);
+                if (qlNhomNguoiDung == null) { return NotFound(); }
                 else
-                    return NotFound();
+                    return Ok(qlNhomNguoiDung);
             }
             catch (Exception)
             {

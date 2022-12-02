@@ -12,6 +12,10 @@ public partial class Hosman123Context : DbContext
         : base(options)
     {
     }
+    string connectionStringVy = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=123;";
+    string connectionStringHai = @"Data Source=.;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=123;";
+    string connectionStringSomee = @"Data Source=Hosman123.mssql.somee.com;persist security info=False;initial catalog=Hosman123;TrustServerCertificate=True;User ID=hosman_SQLLogin_1;Password=e8y3z1txxc;";
+
 
     public virtual DbSet<BinhLuan> BinhLuans { get; set; }
 
@@ -67,7 +71,7 @@ public partial class Hosman123Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=123456;");
+        => optionsBuilder.UseSqlServer(connectionStringVy);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
