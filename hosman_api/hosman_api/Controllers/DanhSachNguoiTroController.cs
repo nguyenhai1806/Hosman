@@ -37,6 +37,7 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
+
         [HttpGet]
         public IActionResult GetAllItems()
         {
@@ -49,6 +50,7 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
+
         [HttpGet("{maNguoiTro}")]
         public IActionResult GetItemByID(string maNguoiTro)
         {
@@ -62,6 +64,7 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
+
         [HttpDelete("{maNguoiTro}")]
         public IActionResult DeteleItem(string maNguoiTro)
         {
@@ -81,6 +84,29 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPut("{maNguoiTro}")]
+        public IActionResult PutItem(string maNguoiTro, DanhSachNguoiTro updateItem)
+        {
+            try
+            {
+                if (maNguoiTro != updateItem.MaNguoiTro)
+                {
+                    return BadRequest();
+                }
+                else if (DanhSachNguoiTroDAL.Instance.ItemExistsByID(maNguoiTro))
+                {
+                    return DanhSachNguoiTroDAL.Instance.PutItem(updateItem) ? Ok() : BadRequest();
+                }
+                else
+                    return NotFound();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         /// <summary>
         /// Lấy ds khách hàng từ tất cả khu trọ của chủ trọ
         /// </summary>
@@ -98,6 +124,7 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
+
         /// <summary>
         /// Lấy ds khách hàng từ tất cả khu trọ của chủ trọ
         /// </summary>

@@ -56,14 +56,15 @@ namespace hosman_api.DAL
                 return false;
         }
 
+        public bool PutItem(DanhSachNguoiTro updateItem)
+        {
+            dbContext.Entry(updateItem).State = EntityState.Modified;
+            return dbContext.SaveChanges() > 0;
+        }
+
         public bool ItemExistsByID(string maNguoiTro)
         {
             return dbContext.QlNhomNguoiDungs.Any(e => e.MaNhom == maNguoiTro);
-        }
-
-        public bool ItemExistsByName(string tenNhom)
-        {
-            return dbContext.QlNhomNguoiDungs.Any(e => e.TenNhom == tenNhom);
         }
 
         public List<DanhSachNguoiTro> GetItemsByChuTro(string maChuTro)

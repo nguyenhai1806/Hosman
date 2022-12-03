@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace hosman_api.Models;
 
-namespace hosman_api.Models;
-
-public partial class KhuTro
+public class KhuTroVM
 {
-    public string MaKhuTro { get; set; } = null!;
-
     public string TenKhu { get; set; } = null!;
-
-    public int? SoPhong { get; set; }
 
     public string DiaChi { get; set; } = null!;
 
@@ -22,6 +15,12 @@ public partial class KhuTro
     public int HanDongTien { get; set; }
 
     public string MaNguoiDung { get; set; } = null!;
+}
+public partial class KhuTro : KhuTroVM
+{
+    public string MaKhuTro { get; set; } = null!;
+
+    public int? SoPhong { get; set; }
 
     public virtual ICollection<DichVuKhuTro> DichVuKhuTros { get; } = new List<DichVuKhuTro>();
 
