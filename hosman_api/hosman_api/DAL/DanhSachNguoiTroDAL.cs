@@ -1,5 +1,4 @@
 ﻿using hosman_api.Models;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace hosman_api.DAL
@@ -69,20 +68,27 @@ namespace hosman_api.DAL
 
         public List<DanhSachNguoiTro> GetItemsByChuTro(string maChuTro)
         {
-            List<DanhSachNguoiTro> danhSach = dbContext.DanhSachNguoiTros
-                .FromSqlRaw(@"SELECT ds.* FROM dbo.DanhSachNguoiTro ds
-                            JOIN dbo.HopDongThue  h ON h.MaHopDong = ds.MaHopDong
-                            JOIN dbo.Phong p ON p.MaPhong = h.MaPhong
-                            JOIN dbo.KhuTro k ON k.MaKhuTro = p.MaKhuTro
-                            JOIN dbo.NguoiDung n ON n.MaNguoiDung = k.MaNguoiDung
-                            WHERE k.MaNguoiDung = @MaNguoiDung", new SqlParameter("@MaNguoiDung", maChuTro)).ToList();
-            return danhSach;
+            //List<DanhSachNguoiTro> danhSach = dbContext.DanhSachNguoiTros
+            //    .FromSqlRaw(@"SELECT ds.* FROM dbo.DanhSachNguoiTro ds
+            //                JOIN dbo.HopDongThue  h ON h.MaHopDong = ds.MaHopDong
+            //                JOIN dbo.Phong p ON p.MaPhong = h.MaPhong
+            //                JOIN dbo.KhuTro k ON k.MaKhuTro = p.MaKhuTro
+            //                JOIN dbo.NguoiDung n ON n.MaNguoiDung = k.MaNguoiDung
+            //                WHERE k.MaNguoiDung = @MaNguoiDung", new SqlParameter("@MaNguoiDung", maChuTro)).ToList();
+            var list =
+                from nguoiDung in dbContext.NguoiDungs.Where(n => n.MaNguoiDung == maChuTro).AsEnumerable()
+                join k in dbContext.KhuTros on nguoiDung.MaNguoiDung equals k.MaNguoiDung
+                join p in dbContext.Phongs on k.MaKhuTro equals p.MaKhuTro
+                join h in dbContext.HopDongThues on p.MaPhong equals h.MaPhong
+                join nguoiTro in dbContext.DanhSachNguoiTros on h.MaHopDong equals nguoiTro.MaHopDong
+                select nguoiTro;
+            return list.ToList();
         }
 
         public List<DanhSachNguoiTro> GetItemsByHopDong(string maHopDong)
         {
-            List<DanhSachNguoiTro> list = dbContext.DanhSachNguoiTros.ToList();
-            return list.FindAll(x => x.MaHopDong.Equals(maHopDong));
+            List<DanhSachNguoiTro> list = dbContext.DanhSachNguoiTros.Where(x => x.MaHopDong == maHopDong).ToList();
+            return list;
         }
     }
 }

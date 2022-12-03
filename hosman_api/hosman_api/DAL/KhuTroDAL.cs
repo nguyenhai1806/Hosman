@@ -57,19 +57,14 @@ namespace hosman_api.DAL
             return true;
         }
 
-        public bool ItemExistsByID(string maKhuTro)
-        {
-            return dbContext.KhuTros.ToList().Any(x => x.MaKhuTro == maKhuTro);
-        }
         /// <summary>
         /// Kiểm tra xem chủ trọ đó có 
         /// </summary>
         /// <param name="maKhuTro"></param>
         /// <returns></returns>
-        public KhuTro GetItemsByName(string maChuTro, string tenKhuTro)
+        public List<KhuTro> GetItemsByChuTro(string maChuTro)
         {
-            return dbContext.KhuTros.ToList().FindAll(k => k.MaNguoiDung == maChuTro)
-                .SingleOrDefault(k => k.TenKhu == tenKhuTro);
+            return dbContext.KhuTros.Where(x => x.MaNguoiDung == maChuTro).ToList();
         }
     }
 }
