@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace hosman_api.Models;
 
-namespace hosman_api.Models;
-
-public partial class DanhSachNguoiTro
+public class DanhSachNguoiTroVM
 {
-    public string MaNguoiTro { get; set; } = null!;
-
     public string TenNguoiTro { get; set; } = null!;
 
     public string Cccd { get; set; } = null!;
@@ -32,6 +27,10 @@ public partial class DanhSachNguoiTro
     public DateTime? NgayDangKyTamTru { get; set; }
 
     public bool? XacMinhThongTin { get; set; }
+}
+public partial class DanhSachNguoiTro : DanhSachNguoiTroVM
+{
+    public string MaNguoiTro { get; set; } = null!;
 
     public virtual HopDongThue MaHopDongNavigation { get; set; } = null!;
 }
