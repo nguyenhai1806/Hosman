@@ -1,6 +1,7 @@
 ﻿using hosman_api.DAL;
 using hosman_api.Models;
 using Microsoft.AspNetCore.Mvc;
+
 namespace hosman_api.Controllers
 {
     [Route("api/[controller]")]
@@ -26,6 +27,7 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
+
         [HttpGet]
         public IActionResult GetAllItems()
         {
@@ -38,6 +40,7 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
+
         [HttpGet("{maNhom}")]
         public IActionResult GetItemByID(string maNhom)
         {
@@ -51,6 +54,7 @@ namespace hosman_api.Controllers
                 return BadRequest();
             }
         }
+
         [HttpDelete("{maNhom}")]
         public IActionResult DeteleItem(string maNhom)
         {

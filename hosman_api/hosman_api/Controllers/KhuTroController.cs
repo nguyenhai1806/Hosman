@@ -20,6 +20,7 @@ namespace hosman_api.Controllers
             KhuTro item = KhuTroDAL.Instance.GetItemByID(maKhuTro);
             return item == null ? NotFound() : Ok(item);
         }
+
         [HttpGet("ChuTro/{maChuTro}")]
         public IActionResult GetItemsByChuTro(string maChuTro)
         {

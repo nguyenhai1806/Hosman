@@ -22,31 +22,37 @@ namespace hosman_api.DAL
         {
         }
 
-        #endregion
+        #endregion instance
 
-        Hosman123Context dbContext = new Hosman123Context();
+        private Hosman123Context dbContext = new Hosman123Context();
+
         public List<QlNhomNguoiDung> GetAllItems()
         {
             return dbContext.QlNhomNguoiDungs.ToList();
         }
+
         public bool PostNewItem(QlNhomNguoiDung newItem)
         {
             dbContext.QlNhomNguoiDungs.Add(newItem);
             return dbContext.SaveChanges() > 0;
         }
+
         public QlNhomNguoiDung GetItemByID(string maNhom)
         {
             QlNhomNguoiDung qlNhomNguoiDung = dbContext.QlNhomNguoiDungs.Where(x => x.MaNhom.Equals(maNhom)).FirstOrDefault();
             return qlNhomNguoiDung;
         }
+
         public bool ItemExistsByID(string maNhom)
         {
             return dbContext.QlNhomNguoiDungs.Any(e => e.MaNhom == maNhom);
         }
+
         public bool ItemExistsByName(string tenNhom)
         {
             return dbContext.QlNhomNguoiDungs.Any(e => e.TenNhom == tenNhom);
         }
+
         public bool RemoveItem(string maNhom)
         {
             QlNhomNguoiDung qlNhomNguoiDung = dbContext.QlNhomNguoiDungs.Where(x => x.MaNhom.Equals(maNhom)).FirstOrDefault();

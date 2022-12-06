@@ -58,7 +58,7 @@ namespace hosman_api.DAL
         }
 
         /// <summary>
-        /// Kiểm tra xem chủ trọ đó có 
+        /// Kiểm tra xem chủ trọ đó có
         /// </summary>
         /// <param name="maKhuTro"></param>
         /// <returns></returns>

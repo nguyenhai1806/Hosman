@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace hosman_api.Models;
 
-namespace hosman_api.Models;
-
-public partial class PhieuChi
+public class PhieuChiVM
 {
-    public string MaPhieuChi { get; set; } = null!;
-
     public string ChiTietChi { get; set; } = null!;
 
     public DateTime NgayChi { get; set; }
@@ -18,6 +13,11 @@ public partial class PhieuChi
     public string MaKhuTro { get; set; } = null!;
 
     public string? GhiChu { get; set; }
+}
+
+public partial class PhieuChi : PhieuChiVM
+{
+    public string MaPhieuChi { get; set; } = null!;
 
     public virtual KhuTro MaKhuTroNavigation { get; set; } = null!;
 

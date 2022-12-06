@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace hosman_api.Models;
 
-namespace hosman_api.Models;
+public class TienIchVM
+{
+    public string TenTienIch { get; set; } = null!;
+    public string? GhiChu { get; set; }
+}
 
-public partial class TienIch
+public partial class TienIch : TienIchVM
 {
     public string MaTienIch { get; set; } = null!;
-
-    public string TenTienIch { get; set; } = null!;
-
-    public string? GhiChu { get; set; }
-
     public virtual ICollection<KhuTro> MaKhuTros { get; } = new List<KhuTro>();
 }
