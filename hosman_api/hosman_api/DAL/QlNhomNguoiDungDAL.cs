@@ -39,7 +39,7 @@ namespace hosman_api.DAL
 
         public QlNhomNguoiDung GetItemByID(string maNhom)
         {
-            QlNhomNguoiDung qlNhomNguoiDung = dbContext.QlNhomNguoiDungs.Where(x => x.MaNhom.Equals(maNhom)).FirstOrDefault();
+            QlNhomNguoiDung qlNhomNguoiDung = dbContext.QlNhomNguoiDungs.Find(maNhom);
             return qlNhomNguoiDung;
         }
 
@@ -55,7 +55,7 @@ namespace hosman_api.DAL
 
         public bool RemoveItem(string maNhom)
         {
-            QlNhomNguoiDung qlNhomNguoiDung = dbContext.QlNhomNguoiDungs.Where(x => x.MaNhom.Equals(maNhom)).FirstOrDefault();
+            QlNhomNguoiDung qlNhomNguoiDung = dbContext.QlNhomNguoiDungs.Find(maNhom);
             if (qlNhomNguoiDung != null)
             {
                 dbContext.QlNhomNguoiDungs.Remove(qlNhomNguoiDung);

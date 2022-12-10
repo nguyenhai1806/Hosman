@@ -57,7 +57,7 @@ namespace hosman_api.Controllers
             try
             {
                 DanhSachNguoiTro item = DanhSachNguoiTroDAL.Instance.GetItemByID(maNguoiTro);
-                return item == null ? Ok(item) : NotFound();
+                return item == null ? NotFound() : Ok(item);
             }
             catch (Exception)
             {
