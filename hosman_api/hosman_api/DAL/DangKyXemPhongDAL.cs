@@ -1,4 +1,5 @@
 ﻿using hosman_api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace hosman_api.DAL
 {
@@ -41,7 +42,21 @@ namespace hosman_api.DAL
         }
         public bool ItemExistsByID(string maDangKy)
         {
-            return dbContext.QlNhomNguoiDungs.Any(e => e.MaNhom == maDangKy);
+            return dbContext.DangKyXemPhongs.Any(e => e.MaDangKy == maDangKy);
+        }
+        public bool PutItem(DangKyXemPhong updateItem)
+        {
+            dbContext.Entry(updateItem).State = EntityState.Modified;
+            return dbContext.SaveChanges() > 0;
+        }
+        public List<DangKyXemPhong> GetItemsByKhuTro(string maKhuTro)
+        {
+            var list =
+                     from KhuTro in dbContext.KhuTros.Where(n => n.MaKhuTro == maKhuTro).AsEnumerable()
+                     join p in dbContext.Phongs on KhuTro.MaKhuTro equals p.MaKhuTro
+                     join dangKyXemPhong in dbContext.DangKyXemPhongs on p.MaPhong equals dangKyXemPhong.MaPhong
+                     select dangKyXemPhong;
+            return list.ToList();
         }
         public bool RemoveItem(string maDangKy)
         {
