@@ -28,11 +28,11 @@ namespace hosman_api.Controllers
             phuLuc.NgayKetThuc = hopDongPhuLuc.NgayKetThuc;
             phuLuc.GhiChu = "Tạo mới hợp đồng";
 
-            //return HopDongThueDAL.Instance.PostNewItem(hopDong, phuLuc) ? Ok(new { hopDong, phuLuc }) : BadRequest();
+            return HopDongThueDAL.Instance.PostNewItem(hopDong, phuLuc) ? Ok(hopDong) : BadRequest();
 
-            bool result = HopDongThueDAL.Instance.PostNewItem(hopDong, phuLuc);
-            hopDong.PhuLucs.Add(phuLuc);
-            return result ? Ok(new { hopDong }) : BadRequest();
+            //bool result = HopDongThueDAL.Instance.PostNewItem(hopDong, phuLuc);
+            //hopDong.PhuLucs.Add(phuLuc);
+            //return result ? Ok(new { hopDong }) : BadRequest();
 
         }
     }
