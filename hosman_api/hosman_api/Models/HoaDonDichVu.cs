@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace hosman_api.Models;
+﻿namespace hosman_api.Models;
 
 public partial class HoaDonDichVu
 {
