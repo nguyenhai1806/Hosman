@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 
 namespace hosman_api.Models;
-
-public partial class Phong
+public class PhongVM
 {
-    public string MaPhong { get; set; } = null!;
-
     public string TenPhong { get; set; } = null!;
 
     public double DienTich { get; set; }
@@ -20,6 +17,10 @@ public partial class Phong
     public bool TinhTrang { get; set; }
 
     public string MaKhuTro { get; set; } = null!;
+}
+public partial class Phong: PhongVM
+{
+    public string MaPhong { get; set; } = null!;
 
     public virtual ICollection<DangKyXemPhong> DangKyXemPhongs { get; } = new List<DangKyXemPhong>();
 

@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 
 namespace hosman_api.Models;
-
-public partial class PhieuCocGiuPhong
+public class PhieuCocGiuPhongVM
 {
-    public string MaPhieuCoc { get; set; } = null!;
-
     public DateTime NgayCoc { get; set; }
 
     public DateTime NgayDuKienVaoO { get; set; }
@@ -20,6 +17,10 @@ public partial class PhieuCocGiuPhong
     public string MaPhong { get; set; } = null!;
 
     public string MaNguoiDung { get; set; } = null!;
+}
+public partial class PhieuCocGiuPhong: PhieuCocGiuPhongVM
+{
+    public string MaPhieuCoc { get; set; } = null!;
 
     public virtual NguoiDung MaNguoiDungNavigation { get; set; } = null!;
 
