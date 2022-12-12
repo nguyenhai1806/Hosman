@@ -225,7 +225,7 @@ CREATE TABLE DanhSachNguoiTro
     CONSTRAINT FK_DSNguoiTro_HopDong FOREIGN KEY (MaHopDong) REFERENCES dbo.HopDongThue (MaHopDong),
 );
 
-CREATE TABLE YeuCauSauChua
+CREATE TABLE YeuCauSuaChua
 (
     MaYeuCau   CHAR(40)      PRIMARY KEY,
     ChiTiet    NVARCHAR(150) NOT NULL,

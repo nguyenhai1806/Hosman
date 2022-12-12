@@ -94,7 +94,7 @@ VALUES
     (NEWID(), N'Lê Mai Hoàng Anh', '542242913922', GETDATE(), N'Cục cảnh sát', '0163968695', GETDATE(), 0, N'', N'',
      N'', '6A502DDE-989C-4E6A-B91E-281CF1B87E38', GETDATE(), 1);
 
-INSERT INTO dbo.YeuCauSauChua (MaYeuCau, ChiTiet, HinhAnh, TinhTrang, MaHopDong, NgayYeuCau)
+INSERT INTO dbo.YeuCauSuaChua (MaYeuCau, ChiTiet, HinhAnh, TinhTrang, MaHopDong, NgayYeuCau)
 VALUES
     (NEWID(), N'May lanh bị hỏng', '', 1, '2FC00D0B-A84A-4C19-A296-22B661DFD18C', '07/11/2022'),
     (NEWID(), N'Máy nước nóng', '', 1, '2FC00D0B-A84A-4C19-A296-22B661DFD18C', '10/11/2022'),
