@@ -13,8 +13,9 @@ public partial class Hosman123Context : DbContext
     {
     }
     string connectionStringVy = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=123;";
-    string connectionStringHai = @"Data Source=.;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=123;";
+    string connectionStringHai = @"Data Source=localhost;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=123;";
     string connectionStringSomee = @"Data Source=Hosman123.mssql.somee.com;persist security info=False;initial catalog=Hosman123;TrustServerCertificate=True;User ID=hosman_SQLLogin_1;Password=e8y3z1txxc;";
+    string connectionStringDocker = @"Data Source=localhost,1533;persist security info=False;initial catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=Hosman123;";
 
     #region properties
     public virtual DbSet<BinhLuan> BinhLuans { get; set; }
