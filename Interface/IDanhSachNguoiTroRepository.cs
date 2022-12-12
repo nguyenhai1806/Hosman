@@ -1,11 +1,10 @@
 ﻿using hosman_api.Data;
 using hosman_api.Models;
 
-namespace hosman_api.Repositories
+namespace hosman_api.Interface
 {
     public interface IDanhSachNguoiTroRepository
     {
-
         public List<DanhSachNguoiTroModel> GetAllItems();
 
         public bool PostNewItem(DanhSachNguoiTro newItem);

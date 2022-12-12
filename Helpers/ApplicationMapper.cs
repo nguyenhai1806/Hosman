@@ -9,6 +9,19 @@ namespace hosman_api.Helpers
         public ApplicationMapper()
         {
             CreateMap<DanhSachNguoiTro, DanhSachNguoiTroModel>().ReverseMap();
+            CreateMap<BinhLuan, BinhLuanModel>().ReverseMap();
+            CreateMap<DangKyXemPhong, DangKyXemPhongModel>().ReverseMap();
+            CreateMap<DichVu, DichVuModel>().ReverseMap();
+            CreateMap<DmManHinh, DmManHinhModel>().ReverseMap();
+            CreateMap<DongHoDien, DongHoDienModel>().ReverseMap();
+            CreateMap<DongHoNuoc, DongHoNuocModel>().ReverseMap();
+            CreateMap<KhuTro, KhuTroModel>().ReverseMap();
+            CreateMap<LoaiPhong, LoaiPhongModel>().ReverseMap();
+            CreateMap<PhieuChi, PhieuChiModel>().ReverseMap();
+            CreateMap<PhieuCocGiuPhong, PhieuCocGiuPhongModel>().ReverseMap();
+            CreateMap<Phong, PhongModel>().ReverseMap();
+            CreateMap<TienIch, TienIchModel>().ReverseMap();
+            CreateMap<YeuCauSuaChua, YeuCauSuaChuaModel>().ReverseMap();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using hosman_api.Interface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace hosman_api.Controllers
 {
@@ -6,22 +7,22 @@ namespace hosman_api.Controllers
     [ApiController]
     public class DanhSachNguoiTroController : ControllerBase
     {
-        //private readonly IDanhSachNguoiTroRepository _repo;
-        //public DanhSachNguoiTroController(IDanhSachNguoiTroRepository repo)
-        //{
-        //    _repo = repo;
-        //}
-        //[HttpGet]
-        //public IActionResult GetAllItems()
-        //{
-        //    try
-        //    {
-        //        return Ok(_repo.GetAllItems());
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+        private readonly IDanhSachNguoiTroRepository _repo;
+        public DanhSachNguoiTroController(IDanhSachNguoiTroRepository repo)
+        {
+            _repo = repo;
+        }
+        [HttpGet]
+        public IActionResult GetAllItems()
+        {
+            try
+            {
+                return Ok(_repo.GetAllItems());
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

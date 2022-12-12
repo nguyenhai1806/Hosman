@@ -1,6 +1,6 @@
 ﻿namespace hosman_api.Models
 {
-    public class DMManHinhModel
+    public class DmManHinhModel
     {
         public string MaManHinh { get; set; } = null!;
 

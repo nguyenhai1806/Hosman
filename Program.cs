@@ -1,4 +1,5 @@
 using hosman_api.Data;
+using hosman_api.Interface;
 using hosman_api.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,8 +17,23 @@ builder.Services.AddDbContext<Hosman123Context>(option =>
 });
 builder.Services.AddAutoMapper(typeof(Program));
 
-//Dang ky Respositories
-builder.Services.AddScoped<IDanhSachNguoiTroRepository, DanhSachNguoiTroRespository>();
+//Register Repositories
+builder.Services.AddScoped<IDanhSachNguoiTroRepository, DanhSachNguoiTroRepository>();
+builder.Services.AddScoped<IBinhLuanRepository, BinhLuanRepository>();
+builder.Services.AddScoped<IDangKyXemPhongRepository, DangKyXemPhongRepository>();
+builder.Services.AddScoped<IDichVuRepository, DichVuRepository>();
+builder.Services.AddScoped<IDmManHinhRepository, DmManHinhRepository>();
+builder.Services.AddScoped<IDongHoNuocRepository, DongHoNuocRespository>();
+builder.Services.AddScoped<IKhuTroRepository, KhuTroRepository>();
+builder.Services.AddScoped<ILoaiPhongRepository, LoaiPhongRepository>();
+builder.Services.AddScoped<INguoiDungRepository, NguoiDungRepository>();
+builder.Services.AddScoped<IPhieuChiRepository, PhieuChiRepository>();
+builder.Services.AddScoped<IPhieuCocGiuPhongRepository, PhieuCocGiuPhongRepository>();
+builder.Services.AddScoped<IPhongRepository, PhongRepository>();
+builder.Services.AddScoped<IPhongRepository, PhongRepository>();
+builder.Services.AddScoped<IPhuLucRepository, PhuLucRepository>();
+builder.Services.AddScoped<ITienIchRepository, TienIchRepository>();
+builder.Services.AddScoped<IYeuCauSuaChuaRepository, YeuCauSuaChuaRepository>();
 
 var app = builder.Build();
 

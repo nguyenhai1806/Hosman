@@ -4,7 +4,6 @@
     {
         public string MaLoai { get; set; } = null!;
         public string TenLoai { get; set; } = null!;
-
         public string? GhiChu { get; set; }
     }
 }

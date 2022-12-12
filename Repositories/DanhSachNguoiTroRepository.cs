@@ -1,15 +1,16 @@
 ﻿using AutoMapper;
 using hosman_api.Data;
+using hosman_api.Interface;
 using hosman_api.Models;
 
 namespace hosman_api.Repositories
 {
-    public class DanhSachNguoiTroRespository : IDanhSachNguoiTroRepository
+    public class DanhSachNguoiTroRepository : IDanhSachNguoiTroRepository
     {
         private readonly Hosman123Context _context;
         private readonly IMapper _mapper;
 
-        public DanhSachNguoiTroRespository(Hosman123Context context, IMapper mapper)
+        public DanhSachNguoiTroRepository(Hosman123Context context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
