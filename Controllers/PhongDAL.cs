@@ -1,5 +1,4 @@
-﻿using hosman_api.DAL;
-using hosman_api.Models;
+﻿using hosman_api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace hosman_api.Controllers

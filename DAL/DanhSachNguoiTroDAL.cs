@@ -40,12 +40,12 @@ namespace hosman_api.DAL
 
         public DanhSachNguoiTro GetItemByID(string maNguoiTro)
         {
-            return dbContext.DanhSachNguoiTros.Find(maNguoiTro);
+            return dbContext.DanhSachNguoiTros.SingleOrDefault(x => x.MaNguoiTro.Equals(maNguoiTro));
         }
 
         public bool RemoveItem(string maNguoiTro)
         {
-            DanhSachNguoiTro nguoiTro = dbContext.DanhSachNguoiTros.Find(maNguoiTro);
+            DanhSachNguoiTro nguoiTro = dbContext.DanhSachNguoiTros.SingleOrDefault(x => x.MaNguoiTro == maNguoiTro);
             if (nguoiTro != null)
             {
                 dbContext.DanhSachNguoiTros.Remove(nguoiTro);

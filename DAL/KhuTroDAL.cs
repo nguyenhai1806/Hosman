@@ -41,12 +41,12 @@ namespace hosman_api.DAL
 
         public KhuTro GetItemByID(string maKhuTro)
         {
-            return dbContext.KhuTros.Find(maKhuTro);
+            return dbContext.KhuTros.SingleOrDefault(x => x.MaKhuTro == maKhuTro);
         }
 
         public bool RemoveItem(string maKhuTro)
         {
-            KhuTro khutro = dbContext.KhuTros.Find(maKhuTro);
+            KhuTro khutro = dbContext.KhuTros.SingleOrDefault(x => x.MaKhuTro == maKhuTro);
             dbContext.KhuTros.Remove(khutro);
             return dbContext.SaveChanges() > 0;
         }
