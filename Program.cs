@@ -24,6 +24,7 @@ builder.Services.AddScoped<IDangKyXemPhongRepository, DangKyXemPhongRepository>(
 builder.Services.AddScoped<IDichVuRepository, DichVuRepository>();
 builder.Services.AddScoped<IDmManHinhRepository, DmManHinhRepository>();
 builder.Services.AddScoped<IDongHoNuocRepository, DongHoNuocRespository>();
+builder.Services.AddScoped<IDongHoDienRepository, DongHoDienRepository>();
 builder.Services.AddScoped<IKhuTroRepository, KhuTroRepository>();
 builder.Services.AddScoped<ILoaiPhongRepository, LoaiPhongRepository>();
 builder.Services.AddScoped<INguoiDungRepository, NguoiDungRepository>();
