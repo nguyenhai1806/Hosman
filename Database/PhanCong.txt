@@ -1,0 +1,16 @@
+Phân công Vy ngày 13/12
+	Bình luận
+	Đăng ký xem phòng
+	Danh sách người trọ
+	DMManHinh
+	DongHoDien
+	DongHoNuoc
+	LoaiPhong
+	PhieuChi
+	PhieuCoc
+	Phong
+	TienIch
+	YeuCauSuaChua
+
+	Sửa kiểm tra tên phòng
+	Where tìm khoá chính -> find

@@ -21,7 +21,7 @@ namespace hosman_api.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
         }
     }
