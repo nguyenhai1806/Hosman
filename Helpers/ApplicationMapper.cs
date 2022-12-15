@@ -22,6 +22,8 @@ namespace hosman_api.Helpers
             CreateMap<Phong, PhongModel>().ReverseMap();
             CreateMap<TienIch, TienIchModel>().ReverseMap();
             CreateMap<YeuCauSuaChua, YeuCauSuaChuaModel>().ReverseMap();
+            CreateMap<HopDongThue, HopDongThueModel>().ReverseMap();
+            CreateMap<PhuLuc, PhuLucModel>().ReverseMap();
         }
     }
 }

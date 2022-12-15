@@ -1,19 +1,21 @@
-SELECT *
+﻿SELECT *
 FROM HopDongThue h
-    LEFT JOIN PhuLuc p
-        ON h.MaHopDong = p.MaHopDong
+     LEFT JOIN PhuLuc p ON h.MaHopDong = p.MaHopDong
+	 WHERE H.MaHopDong = '6A502DDE-989C-4E6A-B91E-281CF1B87E38' 
+	
 
-DECLARE @MaHopDong NVARCHAR(MAX) = '516d182b-f97f-4acf-beeb-3230a25a6227            '
-DELETE PhuLuc WHERE MaHopDong = @MaHopDong
-DELETE HopDongThue WHERE MaHopDong = @MaHopDong
+DELETE PhuLuc
+WHERE MaHopDong IN
+      (
+          SELECT MaHopDong FROM dbo.PhuLuc WHERE GhiChu = N'Tạo mới hợp đồng'
+      );
+DELETE HopDongThue WHERE MaHopDong = N'6A502DDE-989C-4E6A-B91E-281CF1B87E38    ';
+
+SELECT * FROM Phong;
+SELECT * FROM NguoiDung;
+SELECT * FROM HopDongThue;
 
 
-SELECT *
-FROM Phong
-SELECT *
-FROM NguoiDung
-SELECT *
-FROM HopDongThue
 
 {
  "fileHopDong": "string",

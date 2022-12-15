@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Hosman123Context>(option =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringVy"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringHai"));
 });
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -35,6 +35,7 @@ builder.Services.AddScoped<IPhongRepository, PhongRepository>();
 builder.Services.AddScoped<IPhuLucRepository, PhuLucRepository>();
 builder.Services.AddScoped<ITienIchRepository, TienIchRepository>();
 builder.Services.AddScoped<IYeuCauSuaChuaRepository, YeuCauSuaChuaRepository>();
+builder.Services.AddScoped<IHopDongRepository, HopDongThueRepository>();
 
 var app = builder.Build();
 

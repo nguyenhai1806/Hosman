@@ -14,6 +14,7 @@ namespace hosman_api.Controllers
         {
             _repo = repo;
         }
+
         [HttpGet]
         public IActionResult GetAllItems()
         {
