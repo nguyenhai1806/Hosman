@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Hosman123Context>(option =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringHai"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringLocal"));
 });
 builder.Services.AddAutoMapper(typeof(Program));
 
