@@ -36,6 +36,7 @@ builder.Services.AddScoped<IPhuLucRepository, PhuLucRepository>();
 builder.Services.AddScoped<ITienIchRepository, TienIchRepository>();
 builder.Services.AddScoped<IYeuCauSuaChuaRepository, YeuCauSuaChuaRepository>();
 builder.Services.AddScoped<IHopDongRepository, HopDongThueRepository>();
+builder.Services.AddScoped<IDichVuKhuTro, DichVuKhuTroRepository>();
 
 var app = builder.Build();
 

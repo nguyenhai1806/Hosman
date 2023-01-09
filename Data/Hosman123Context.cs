@@ -69,22 +69,22 @@ public partial class Hosman123Context : DbContext
     {
         modelBuilder.Entity<BinhLuan>(entity =>
         {
-            entity.HasKey(e => e.MaBinhLuan).HasName("PK__BinhLuan__87CB66A09180B63F");
+            entity.HasKey(e => e.MaBinhLuan).HasName("PK__BinhLuan__87CB66A045033F62");
 
             entity.ToTable("BinhLuan");
 
             entity.Property(e => e.MaBinhLuan)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.ChuTro)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.HinhAnh).IsUnicode(false);
             entity.Property(e => e.Ngay).HasColumnType("date");
             entity.Property(e => e.NguoiBinhLuan)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NoiDung).HasMaxLength(300);
@@ -101,23 +101,23 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DangKyXemPhong>(entity =>
         {
-            entity.HasKey(e => e.MaDangKy).HasName("PK__DangKyXe__BA90F02D60EA41A2");
+            entity.HasKey(e => e.MaDangKy).HasName("PK__DangKyXe__BA90F02DD4425758");
 
             entity.ToTable("DangKyXemPhong");
 
             entity.Property(e => e.MaDangKy)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(300);
             entity.Property(e => e.MaPhong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayDangKy).HasColumnType("date");
             entity.Property(e => e.NgayHenXem).HasColumnType("date");
             entity.Property(e => e.NguoiDung)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
 
@@ -134,12 +134,12 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DanhSachNguoiTro>(entity =>
         {
-            entity.HasKey(e => e.MaNguoiTro).HasName("PK__DanhSach__F9292A80504CCFA7");
+            entity.HasKey(e => e.MaNguoiTro).HasName("PK__DanhSach__F9292A80E7433266");
 
             entity.ToTable("DanhSachNguoiTro");
 
             entity.Property(e => e.MaNguoiTro)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.AnhCccdsau).HasColumnName("AnhCCCDSau");
@@ -150,7 +150,7 @@ public partial class Hosman123Context : DbContext
                 .IsFixedLength()
                 .HasColumnName("CCCD");
             entity.Property(e => e.MaHopDong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayCap).HasColumnType("date");
@@ -172,12 +172,12 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DichVu>(entity =>
         {
-            entity.HasKey(e => e.MaDichVu).HasName("PK__DichVu__C0E6DE8F88D848A9");
+            entity.HasKey(e => e.MaDichVu).HasName("PK__DichVu__C0E6DE8FBAE1C755");
 
             entity.ToTable("DichVu");
 
             entity.Property(e => e.MaDichVu)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.DonViTinh).HasMaxLength(100);
@@ -191,11 +191,11 @@ public partial class Hosman123Context : DbContext
             entity.ToTable("DichVu_KhuTro");
 
             entity.Property(e => e.MaDichVu)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaKhuTro)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.DonGia).HasColumnType("decimal(19, 4)");
@@ -218,15 +218,15 @@ public partial class Hosman123Context : DbContext
             entity.ToTable("DichVu_Phong");
 
             entity.Property(e => e.MaDichVu)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaKhuTro)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaPhong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
 
@@ -243,14 +243,14 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DmManHinh>(entity =>
         {
-            entity.HasKey(e => e.MaManHinh).HasName("PK__DM_ManHi__D8493922FC4BD7D9");
+            entity.HasKey(e => e.MaManHinh).HasName("PK__DM_ManHi__D84939223250585A");
 
             entity.ToTable("DM_ManHinh");
 
-            entity.HasIndex(e => e.TenManHinh, "UQ__DM_ManHi__6A9FD4D760A06E69").IsUnique();
+            entity.HasIndex(e => e.TenManHinh, "UQ__DM_ManHi__6A9FD4D7BD1F1232").IsUnique();
 
             entity.Property(e => e.MaManHinh)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.TenManHinh).HasMaxLength(150);
@@ -258,16 +258,16 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DongHoDien>(entity =>
         {
-            entity.HasKey(e => e.MaBanGhi).HasName("PK__DongHoDi__49DB95358DADC0A1");
+            entity.HasKey(e => e.MaBanGhi).HasName("PK__DongHoDi__49DB9535E368F605");
 
             entity.ToTable("DongHoDien");
 
             entity.Property(e => e.MaBanGhi)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaPhong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayGhi).HasColumnType("date");
@@ -280,16 +280,16 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DongHoNuoc>(entity =>
         {
-            entity.HasKey(e => e.MaBanGhi).HasName("PK__DongHoNu__49DB9535E9CB886E");
+            entity.HasKey(e => e.MaBanGhi).HasName("PK__DongHoNu__49DB9535A554F44B");
 
             entity.ToTable("DongHoNuoc");
 
             entity.Property(e => e.MaBanGhi)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaPhong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayGhi).HasColumnType("date");
@@ -302,18 +302,18 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<HoaDon>(entity =>
         {
-            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon__835ED13B830218B2");
+            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon__835ED13B3508F923");
 
             entity.ToTable("HoaDon");
 
             entity.Property(e => e.MaHoaDon)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(150);
             entity.Property(e => e.HanDongTien).HasColumnType("date");
             entity.Property(e => e.MaHopDong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayLapHd)
@@ -355,11 +355,11 @@ public partial class Hosman123Context : DbContext
             entity.ToTable("HoaDon_DichVu");
 
             entity.Property(e => e.MaHoaDon)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaDichVu)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.DonGia).HasColumnType("decimal(19, 4)");
@@ -378,20 +378,20 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<HoaDonDien>(entity =>
         {
-            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon_D__835ED13B63BFC446");
+            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon_D__835ED13BB4CED55A");
 
             entity.ToTable("HoaDon_Dien");
 
             entity.Property(e => e.MaHoaDon)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.BanGhiSoCuoi)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.BanGhiSoDau)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.DonGia).HasColumnType("decimal(19, 4)");
@@ -415,20 +415,20 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<HoaDonNuoc>(entity =>
         {
-            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon_N__835ED13B16EDFBB6");
+            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon_N__835ED13B617CC94B");
 
             entity.ToTable("HoaDon_Nuoc");
 
             entity.Property(e => e.MaHoaDon)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.BanGhiSoCuoi)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.BanGhiSoDau)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.DonGia).HasColumnType("decimal(19, 4)");
@@ -452,21 +452,21 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<HopDongThue>(entity =>
         {
-            entity.HasKey(e => e.MaHopDong).HasName("PK__HopDongT__36DD434262D07EFF");
+            entity.HasKey(e => e.MaHopDong).HasName("PK__HopDongT__36DD4342854281B4");
 
             entity.ToTable("HopDongThue");
 
             entity.Property(e => e.MaHopDong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.FileHopDong).IsUnicode(false);
             entity.Property(e => e.MaNguoiThue)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaPhong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.TienCocDamBao).HasColumnType("decimal(19, 4)");
@@ -485,18 +485,18 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<KhuTro>(entity =>
         {
-            entity.HasKey(e => e.MaKhuTro).HasName("PK__KhuTro__05E24E4876D539D1");
+            entity.HasKey(e => e.MaKhuTro).HasName("PK__KhuTro__05E24E48D539CC4C");
 
             entity.ToTable("KhuTro");
 
             entity.Property(e => e.MaKhuTro)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GiaDien).HasColumnType("decimal(19, 4)");
             entity.Property(e => e.GiaNuoc).HasColumnType("decimal(19, 4)");
             entity.Property(e => e.MaNguoiDung)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayLapHd).HasColumnName("NgayLapHD");
@@ -511,14 +511,14 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<LoaiPhong>(entity =>
         {
-            entity.HasKey(e => e.MaLoai).HasName("PK__LoaiPhon__730A5759EE5C878D");
+            entity.HasKey(e => e.MaLoai).HasName("PK__LoaiPhon__730A5759BD2C2564");
 
             entity.ToTable("LoaiPhong");
 
-            entity.HasIndex(e => e.TenLoai, "UQ__LoaiPhon__E29B1042BFEB5081").IsUnique();
+            entity.HasIndex(e => e.TenLoai, "UQ__LoaiPhon__E29B10422DF62EA6").IsUnique();
 
             entity.Property(e => e.MaLoai)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(150);
@@ -544,16 +544,16 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<NguoiDung>(entity =>
         {
-            entity.HasKey(e => e.MaNguoiDung).HasName("PK__NguoiDun__C539D762003723DF");
+            entity.HasKey(e => e.MaNguoiDung).HasName("PK__NguoiDun__C539D762F4D7AEC6");
 
             entity.ToTable("NguoiDung");
 
-            entity.HasIndex(e => e.SoDienThoai, "UQ__NguoiDun__0389B7BDC5DFF32A").IsUnique();
+            entity.HasIndex(e => e.SoDienThoai, "UQ__NguoiDun__0389B7BD44BF2100").IsUnique();
 
-            entity.HasIndex(e => e.Cccd, "UQ__NguoiDun__A955A0AA10B667C6").IsUnique();
+            entity.HasIndex(e => e.Cccd, "UQ__NguoiDun__A955A0AA274334C3").IsUnique();
 
             entity.Property(e => e.MaNguoiDung)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.AnhCccdsau).HasColumnName("AnhCCCDSau");
@@ -575,19 +575,19 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<PhieuChi>(entity =>
         {
-            entity.HasKey(e => e.MaPhieuChi).HasName("PK__PhieuChi__00AC0F19953E14D8");
+            entity.HasKey(e => e.MaPhieuChi).HasName("PK__PhieuChi__00AC0F1936E27487");
 
             entity.ToTable("PhieuChi");
 
             entity.Property(e => e.MaPhieuChi)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.ChiPhi).HasColumnType("decimal(19, 4)");
             entity.Property(e => e.ChiTietChi).HasMaxLength(150);
             entity.Property(e => e.GhiChu).HasMaxLength(150);
             entity.Property(e => e.MaKhuTro)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayChi).HasColumnType("date");
@@ -603,18 +603,21 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<PhieuCocGiuPhong>(entity =>
         {
-            entity.HasKey(e => e.MaPhieuCoc).HasName("PK__PhieuCoc__00AC24AA2CE6ACC5");
+            entity.HasKey(e => e.MaPhieuCoc).HasName("PK__PhieuCoc__00AC24AA3259B1F2");
 
             entity.ToTable("PhieuCocGiuPhong");
 
-            entity.Property(e => e.MaPhieuCoc).HasMaxLength(40);
+            entity.Property(e => e.MaPhieuCoc)
+                .HasMaxLength(36)
+                .IsUnicode(false)
+                .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(200);
             entity.Property(e => e.MaNguoiDung)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaPhong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayCoc)
@@ -636,7 +639,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<Phong>(entity =>
         {
-            entity.HasKey(e => e.MaPhong).HasName("PK__Phong__20BD5E5B9C966AB4");
+            entity.HasKey(e => e.MaPhong).HasName("PK__Phong__20BD5E5B6857BB81");
 
             entity.ToTable("Phong", tb =>
                 {
@@ -645,13 +648,13 @@ public partial class Hosman123Context : DbContext
                 });
 
             entity.Property(e => e.MaPhong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(150);
             entity.Property(e => e.GiaThue).HasColumnType("decimal(19, 4)");
             entity.Property(e => e.MaKhuTro)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.TenPhong).HasMaxLength(150);
@@ -664,18 +667,18 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<PhuLuc>(entity =>
         {
-            entity.HasKey(e => e.MaPhuLuc).HasName("PK__PhuLuc__FB0ECCD8EB4C33CA");
+            entity.HasKey(e => e.MaPhuLuc).HasName("PK__PhuLuc__FB0ECCD85E430FB7");
 
             entity.ToTable("PhuLuc");
 
             entity.Property(e => e.MaPhuLuc)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(150);
             entity.Property(e => e.GiaThue).HasColumnType("decimal(19, 4)");
             entity.Property(e => e.MaHopDong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayBatDau).HasColumnType("date");
@@ -694,11 +697,11 @@ public partial class Hosman123Context : DbContext
             entity.ToTable("QL_NguoiDungNhomNguoiDung");
 
             entity.Property(e => e.MaNguoiDung)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaNhomNguoiDung)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(50);
@@ -716,14 +719,14 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<QlNhomNguoiDung>(entity =>
         {
-            entity.HasKey(e => e.MaNhom).HasName("PK__QL_NhomN__234F91CD27B39EC7");
+            entity.HasKey(e => e.MaNhom).HasName("PK__QL_NhomN__234F91CD5BF5287F");
 
             entity.ToTable("QL_NhomNguoiDung");
 
-            entity.HasIndex(e => e.TenNhom, "UQ__QL_NhomN__2B432D0D0E1EAA47").IsUnique();
+            entity.HasIndex(e => e.TenNhom, "UQ__QL_NhomN__2B432D0D3807E716").IsUnique();
 
             entity.Property(e => e.MaNhom)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(150);
@@ -737,11 +740,11 @@ public partial class Hosman123Context : DbContext
             entity.ToTable("QL_PhanQuyen");
 
             entity.Property(e => e.MaNhomNguoiDung)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.MaManHinh)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
 
@@ -758,14 +761,14 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<TienIch>(entity =>
         {
-            entity.HasKey(e => e.MaTienIch).HasName("PK__TienIch__4697D8EA1265A14C");
+            entity.HasKey(e => e.MaTienIch).HasName("PK__TienIch__4697D8EA77D26D72");
 
             entity.ToTable("TienIch");
 
-            entity.HasIndex(e => e.TenTienIch, "UQ__TienIch__0DE17DA887434E99").IsUnique();
+            entity.HasIndex(e => e.TenTienIch, "UQ__TienIch__0DE17DA82736E224").IsUnique();
 
             entity.Property(e => e.MaTienIch)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.GhiChu).HasMaxLength(150);
@@ -791,18 +794,18 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<YeuCauSuaChua>(entity =>
         {
-            entity.HasKey(e => e.MaYeuCau).HasName("PK__YeuCauSu__CFA5DF4E1BAB936C");
+            entity.HasKey(e => e.MaYeuCau).HasName("PK__YeuCauSu__CFA5DF4EA2F954C9");
 
             entity.ToTable("YeuCauSuaChua");
 
             entity.Property(e => e.MaYeuCau)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.ChiTiet).HasMaxLength(150);
             entity.Property(e => e.HinhAnh).IsUnicode(false);
             entity.Property(e => e.MaHopDong)
-                .HasMaxLength(40)
+                .HasMaxLength(36)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.NgayYeuCau).HasColumnType("date");

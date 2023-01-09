@@ -18,27 +18,37 @@ namespace hosman_api.Repositories
 
         public List<DichVuModel> GetAllItems()
         {
-            throw new NotImplementedException();
+            List<DichVu> dichVus = _context.DichVus.ToList();
+            return _mapper.Map<List<DichVuModel>>(dichVus);
         }
 
         public bool PostNewItem(DichVuModel newItem)
         {
-            throw new NotImplementedException();
+            DichVu dichVu = _mapper.Map<DichVu>(newItem);
+            _context.DichVus.Add(dichVu);
+            return _context.SaveChanges() > 0;
         }
 
-        public DichVuModel GetItemByID(string id)
+        public DichVuModel GetItemByID(string maDichVu)
         {
-            throw new NotImplementedException();
+            DichVu dichVu = _context.DichVus.Find(maDichVu);
+            return _mapper.Map<DichVuModel>(dichVu);
         }
 
         public bool RemoveItem(string maDichVu)
         {
-            throw new NotImplementedException();
+            DichVu dichVu = _context.DichVus.Find(maDichVu);
+            _context.DichVus.Remove(dichVu);
+            return _context.SaveChanges() > 0;
         }
 
         public bool PutItem(DichVuModel updateItem)
         {
-            throw new NotImplementedException();
+            DichVu dichVu = _context.DichVus.Find(updateItem.MaDichVu);
+            dichVu.TenDichVu = updateItem.TenDichVu;
+            dichVu.DonViTinh = updateItem.DonViTinh;
+            _context.DichVus.Update(dichVu);
+            return _context.SaveChanges() > 0;
         }
     }
 }

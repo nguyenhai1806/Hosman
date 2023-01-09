@@ -54,13 +54,15 @@ namespace hosman_api.Controllers
         {
             if (maDichVu != updateItem.MaDichVu)
                 return NotFound();
-
+            string n = Guid.NewGuid().ToString();
             //Kiem tra ten khu da ton tai trong cac khu tro cua người dùng này hay chưa
             List<DichVuModel> dichVus = _repo.GetAllItems();
             foreach (var item in dichVus)
             {
+
                 if (item.TenDichVu == updateItem.TenDichVu && item.MaDichVu != updateItem.MaDichVu)
                     return BadRequest("Tên dịch vụ đã tồn tai");
+
             }
 
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();

@@ -24,6 +24,7 @@ namespace hosman_api.Helpers
             CreateMap<YeuCauSuaChua, YeuCauSuaChuaModel>().ReverseMap();
             CreateMap<HopDongThue, HopDongThueModel>().ReverseMap();
             CreateMap<PhuLuc, PhuLucModel>().ReverseMap();
+            CreateMap<DichVuKhuTro, DichVuKhuTroModel>().ReverseMap();
         }
     }
 }
