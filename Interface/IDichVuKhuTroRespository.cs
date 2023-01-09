@@ -2,9 +2,9 @@
 
 namespace hosman_api.Interface
 {
-    public interface IDichVuKhuTro
+    public interface IDichVuKhuTroRespository
     {
-        public List<DichVuKhuTroModel> GetAllItemsBy();
+        public List<DichVuKhuTroModel> GetAllItems();
         public List<DichVuKhuTroModel> GetAllItemsByKhuTro(string maKhuTro);
         public bool PostNewItem(DichVuKhuTroModel newItem);
         public DichVuKhuTroModel GetItemByID(string maDichVu, string maKhuTro);

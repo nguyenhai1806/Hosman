@@ -6,7 +6,7 @@ using hosman_api.Models;
 namespace hosman_api.Repositories
 {
 
-    public class DichVuKhuTroRepository : IDichVuKhuTro
+    public class DichVuKhuTroRepository : IDichVuKhuTroRespository
     {
         private readonly Hosman123Context _context;
         private readonly IMapper _mapper;
@@ -17,9 +17,10 @@ namespace hosman_api.Repositories
             _mapper = mapper;
         }
 
-        public List<DichVuKhuTroModel> GetAllItemsBy()
+        public List<DichVuKhuTroModel> GetAllItems()
         {
-            return _mapper.Map<List<DichVuKhuTroModel>>(_context.DichVuKhuTros.ToList());
+            List<DichVuKhuTro> list = _context.DichVuKhuTros.ToList();
+            return _mapper.Map<List<DichVuKhuTroModel>>(list);
         }
 
         public List<DichVuKhuTroModel> GetAllItemsByKhuTro(string maKhuTro)
@@ -50,8 +51,8 @@ namespace hosman_api.Repositories
 
         public bool PutItem(DichVuKhuTroModel updateItem)
         {
-            DichVuKhuTro dichVuKhuTro = _mapper.Map<DichVuKhuTro>(updateItem);
-            _context.DichVuKhuTros.Update(dichVuKhuTro);
+            DichVuKhuTro dichVuKhuTro = _context.DichVuKhuTros.Find(updateItem.MaDichVu, updateItem.MaKhuTro);
+            dichVuKhuTro.DonGia = updateItem.DonGia;
             return _context.SaveChanges() > 0;
         }
     }
