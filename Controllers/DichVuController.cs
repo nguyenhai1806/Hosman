@@ -45,6 +45,7 @@ namespace hosman_api.Controllers
         [HttpPut("{maDichVu}")]
         public IActionResult PutItem(string maDichVu, DichVuModel updateItem)
         {
+            //TODO Kiểm tra tên dịch vụ xem có trùng không
             if (maDichVu != updateItem.MaDichVu)
                 return NotFound();
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();

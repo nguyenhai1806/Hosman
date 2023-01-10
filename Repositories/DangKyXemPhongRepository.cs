@@ -2,7 +2,6 @@
 using hosman_api.Data;
 using hosman_api.Interface;
 using hosman_api.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace hosman_api.Repositories
 {
@@ -64,5 +63,6 @@ namespace hosman_api.Repositories
                 return false;
             }
         }
+        //TODO Thêm PutItem
     }
 }

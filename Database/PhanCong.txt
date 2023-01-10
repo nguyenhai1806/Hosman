@@ -14,3 +14,8 @@ Phân công Vy ngày 13/12
 
 	Sửa kiểm tra tên phòng
 	Where tìm khoá chính -> find
+
+Phân công Vy ngày 10/1
+	fix những lỗi theo comment TODO ( VIEW -> TASK LIST)
+	Sửa lỗi PutItem trong Repository
+	Test Controller
