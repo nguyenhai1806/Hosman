@@ -22,33 +22,43 @@ namespace hosman_api.Repositories
             return _mapper.Map<List<DichVuModel>>(dichVus);
         }
 
-        public bool PostNewItem(DichVuModel newItem)
-        {
-            DichVu dichVu = _mapper.Map<DichVu>(newItem);
-            _context.DichVus.Add(dichVu);
-            return _context.SaveChanges() > 0;
-        }
-
         public DichVuModel GetItemByID(string maDichVu)
         {
-            DichVu dichVu = _context.DichVus.Find(maDichVu);
+            var dichVu = _context.DichVus.Find(maDichVu);
             return _mapper.Map<DichVuModel>(dichVu);
         }
 
-        public bool RemoveItem(string maDichVu)
+        public bool ItemExistsByID(string maDichVu)
         {
-            DichVu dichVu = _context.DichVus.Find(maDichVu);
-            _context.DichVus.Remove(dichVu);
+            return _context.DichVus.Any(e => e.MaDichVu == maDichVu);
+        }
+
+        public bool PostNewItem(DichVuModel item)
+        {
+            var dichVu = _mapper.Map<DichVu>(item);
+            _context.DichVus.Add(dichVu);
             return _context.SaveChanges() > 0;
         }
 
         public bool PutItem(DichVuModel updateItem)
         {
-            DichVu dichVu = _context.DichVus.Find(updateItem.MaDichVu);
-            dichVu.TenDichVu = updateItem.TenDichVu;
-            dichVu.DonViTinh = updateItem.DonViTinh;
+            DichVu dichVu = _mapper.Map<DichVu>(updateItem);
             _context.DichVus.Update(dichVu);
             return _context.SaveChanges() > 0;
+        }
+
+        public bool RemoveItem(string maDichVu)
+        {
+            var dichVu = _context.DichVus.Find(maDichVu);
+            if (dichVu != null)
+            {
+                _context.DichVus.Remove(dichVu);
+                return _context.SaveChanges() > 0;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

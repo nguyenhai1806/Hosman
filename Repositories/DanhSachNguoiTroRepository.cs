@@ -2,6 +2,8 @@
 using hosman_api.Data;
 using hosman_api.Interface;
 using hosman_api.Models;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace hosman_api.Repositories
 {
@@ -21,39 +23,62 @@ namespace hosman_api.Repositories
             return _mapper.Map<List<DanhSachNguoiTroModel>>(danhSachNguoiTros);
         }
 
-        public bool PostNewItem(DanhSachNguoiTro newItem)
+        public bool PostNewItem(DanhSachNguoiTroModel newItem)
         {
-            throw new NotImplementedException();
+            var danhSachNguoiTro = _mapper.Map<DanhSachNguoiTro>(newItem);
+            _context.DanhSachNguoiTros.Add(danhSachNguoiTro);
+            return _context.SaveChanges() > 0;
         }
 
-        public DanhSachNguoiTro GetItemByID(string maNguoiTro)
+        public DanhSachNguoiTroModel GetItemByID(string maNguoiTro)
         {
-            throw new NotImplementedException();
+            var danhSachNguoiTro = _context.DanhSachNguoiTros.Find(maNguoiTro);
+            return _mapper.Map<DanhSachNguoiTroModel>(danhSachNguoiTro);
         }
 
         public bool RemoveItem(string maNguoiTro)
         {
-            throw new NotImplementedException();
+            var danhSachNguoiTro = _context.DanhSachNguoiTros.Find(maNguoiTro);
+            if (danhSachNguoiTro != null)
+            {
+                _context.DanhSachNguoiTros.Remove(danhSachNguoiTro);
+                return _context.SaveChanges() > 0;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public bool PutItem(DanhSachNguoiTro updateItem)
+        public bool PutItem(DanhSachNguoiTroModel updateItem)
         {
-            throw new NotImplementedException();
+            DanhSachNguoiTro danhSachNguoiTro = _mapper.Map<DanhSachNguoiTro>(updateItem);
+            _context.DanhSachNguoiTros.Update(danhSachNguoiTro);
+            return _context.SaveChanges() > 0;
         }
 
         public bool ItemExistsByID(string maNguoiTro)
         {
-            throw new NotImplementedException();
+            return _context.DanhSachNguoiTros.Any(e => e.MaNguoiTro == maNguoiTro);
         }
 
-        public List<DanhSachNguoiTro> GetItemsByChuTro(string maChuTro)
+        public List<DanhSachNguoiTroModel> GetItemsByChuTro(string maChuTro)
         {
-            throw new NotImplementedException();
+            var list =
+                 from nguoiDung in _context.NguoiDungs.Where(n => n.MaNguoiDung == maChuTro).AsEnumerable()
+                 join k in _context.KhuTros on nguoiDung.MaNguoiDung equals k.MaNguoiDung
+                 join p in _context.Phongs on k.MaKhuTro equals p.MaKhuTro
+                 join h in _context.HopDongThues on p.MaPhong equals h.MaPhong
+                 join nguoiTro in _context.DanhSachNguoiTros on h.MaHopDong equals nguoiTro.MaHopDong
+                 select nguoiTro;
+            return _mapper.Map<List<DanhSachNguoiTroModel>>(list);
         }
 
-        public List<DanhSachNguoiTro> GetItemsByHopDong(string maHopDong)
+        public List<DanhSachNguoiTroModel> GetItemsByHopDong(string maHopDong)
         {
-            throw new NotImplementedException();
+           
+            List<DanhSachNguoiTro> list = _context.DanhSachNguoiTros.Where(x => x.MaHopDong == maHopDong).ToList();
+            return _mapper.Map<List<DanhSachNguoiTroModel>>(list);
         }
     }
 }

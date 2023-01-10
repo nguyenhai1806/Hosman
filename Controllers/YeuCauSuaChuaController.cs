@@ -6,10 +6,10 @@ namespace hosman_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TienIchController : ControllerBase
+    public class YeuCauSuaChuaController : ControllerBase
     {
-        private readonly ITienIchRepository _repo;
-        public TienIchController(ITienIchRepository repo)
+        private readonly IYeuCauSuaChuaRepository _repo;
+        public YeuCauSuaChuaController(IYeuCauSuaChuaRepository repo)
         {
             _repo = repo;
         }
@@ -25,20 +25,19 @@ namespace hosman_api.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpGet("{maTienIch}")]
-        public IActionResult GetItemByID(string maTienIch)
+        [HttpGet("{maYeuCau}")]
+        public IActionResult GetItemByID(string maYeuCau)
         {
-            TienIchModel item = _repo.GetItemByID(maTienIch);
+            YeuCauSuaChuaModel item = _repo.GetItemByID(maYeuCau);
             return item == null ? NotFound() : Ok(item);
         }
 
         [HttpPost]
-        public IActionResult PostNewItem(TienIchModel newItem)
+        public IActionResult PostNewItem(YeuCauSuaChuaModel newItem)
         {
             try
             {
-                //TODO Kiểm tra có trùng tên hay không
-                newItem.MaTienIch = Guid.NewGuid().ToString();
+                newItem.MaYeuCau = Guid.NewGuid().ToString();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)
@@ -47,23 +46,22 @@ namespace hosman_api.Controllers
             }
         }
 
-        [HttpPut("{maTienIch}")]
-        public IActionResult PutItem(string maTienIch, TienIchModel updateItem)
+        [HttpPut("{maYeuCau}")]
+        public IActionResult PutItem(string maYeuCau, YeuCauSuaChuaModel updateItem)
         {
-            //TODO Kiểm tra có trùng tên hay không
-            if (maTienIch != updateItem.MaTienIch)
+            if (maYeuCau != updateItem.MaYeuCau)
                 return NotFound();
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();
         }
 
-        [HttpDelete("{maTienIch}")]
-        public IActionResult DeleteItem(string maTienIch)
+        [HttpDelete("{maYeuCau}")]
+        public IActionResult DeleteItem(string maYeuCau)
         {
             try
             {
-                if (_repo.GetItemByID(maTienIch) == null)
+                if (_repo.GetItemByID(maYeuCau) == null)
                     return NotFound();
-                return _repo.RemoveItem(maTienIch) ? Ok() : BadRequest();
+                return _repo.RemoveItem(maYeuCau) ? Ok() : BadRequest();
             }
             catch (Exception e)
             {

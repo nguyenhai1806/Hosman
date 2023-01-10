@@ -6,10 +6,10 @@ namespace hosman_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TienIchController : ControllerBase
+    public class LoaiPhongController : ControllerBase
     {
-        private readonly ITienIchRepository _repo;
-        public TienIchController(ITienIchRepository repo)
+        private readonly ILoaiPhongRepository _repo;
+        public LoaiPhongController(ILoaiPhongRepository repo)
         {
             _repo = repo;
         }
@@ -25,20 +25,20 @@ namespace hosman_api.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpGet("{maTienIch}")]
-        public IActionResult GetItemByID(string maTienIch)
+        [HttpGet("{maLoaiPhong}")]
+        public IActionResult GetItemByID(string maLoaiPhong)
         {
-            TienIchModel item = _repo.GetItemByID(maTienIch);
+            LoaiPhongModel item = _repo.GetItemByID(maLoaiPhong);
             return item == null ? NotFound() : Ok(item);
         }
 
         [HttpPost]
-        public IActionResult PostNewItem(TienIchModel newItem)
+        public IActionResult PostNewItem(LoaiPhongModel newItem)
         {
             try
             {
-                //TODO Kiểm tra có trùng tên hay không
-                newItem.MaTienIch = Guid.NewGuid().ToString();
+                //TODO Kiểm tra tên có trùng không
+                newItem.MaLoai = Guid.NewGuid().ToString();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)
@@ -47,23 +47,23 @@ namespace hosman_api.Controllers
             }
         }
 
-        [HttpPut("{maTienIch}")]
-        public IActionResult PutItem(string maTienIch, TienIchModel updateItem)
+        [HttpPut("{maLoaiPhong}")]
+        public IActionResult PutItem(string maLoaiPhong, LoaiPhongModel updateItem)
         {
-            //TODO Kiểm tra có trùng tên hay không
-            if (maTienIch != updateItem.MaTienIch)
+            //TODO Kiểm tra tên có trùng không
+            if (maLoaiPhong != updateItem.MaLoai)
                 return NotFound();
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();
         }
 
-        [HttpDelete("{maTienIch}")]
-        public IActionResult DeleteItem(string maTienIch)
+        [HttpDelete("{maLoaiPhong}")]
+        public IActionResult DeleteItem(string maLoaiPhong)
         {
             try
             {
-                if (_repo.GetItemByID(maTienIch) == null)
+                if (_repo.GetItemByID(maLoaiPhong) == null)
                     return NotFound();
-                return _repo.RemoveItem(maTienIch) ? Ok() : BadRequest();
+                return _repo.RemoveItem(maLoaiPhong) ? Ok() : BadRequest();
             }
             catch (Exception e)
             {

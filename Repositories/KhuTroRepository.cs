@@ -16,6 +16,10 @@ namespace hosman_api.Repositories
             _mapper = mapper;
         }
 
+        public KhuTroRepository()
+        {
+        }
+
         public List<KhuTroModel> GetAllItems()
         {
             List<KhuTro> khuTros = _context.KhuTros.ToList();

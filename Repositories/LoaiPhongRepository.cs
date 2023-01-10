@@ -19,27 +19,42 @@ namespace hosman_api.Repositories
 
         public List<LoaiPhongModel> GetAllItems()
         {
-            throw new NotImplementedException();
+            List<LoaiPhong> loaiPhongs = _context.LoaiPhongs.ToList();
+            return _mapper.Map<List<LoaiPhongModel>>(loaiPhongs);
         }
 
         public bool PostNewItem(LoaiPhongModel newItem)
         {
-            throw new NotImplementedException();
+            var loaiPhong = _mapper.Map<LoaiPhong>(newItem);
+            _context.LoaiPhongs.Add(loaiPhong);
+            return _context.SaveChanges() > 0;
         }
 
         public LoaiPhongModel GetItemByID(string maLoaiPhong)
         {
-            throw new NotImplementedException();
+            var loaiPhong = _context.LoaiPhongs.Find(maLoaiPhong);
+            return _mapper.Map<LoaiPhongModel>(loaiPhong);
         }
 
         public bool RemoveItem(string maLoaiPhong)
         {
-            throw new NotImplementedException();
+            var loaiPhong = _context.LoaiPhongs.Find(maLoaiPhong);
+            if (loaiPhong != null)
+            {
+                _context.LoaiPhongs.Remove(loaiPhong);
+                return _context.SaveChanges() > 0;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool PutItem(LoaiPhongModel updateItem)
         {
-            throw new NotImplementedException();
+            LoaiPhong loaiPhong = _mapper.Map<LoaiPhong>(updateItem);
+            _context.LoaiPhongs.Update(loaiPhong);
+            return _context.SaveChanges() > 0;
         }
     }
 }

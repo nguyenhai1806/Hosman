@@ -1,5 +1,4 @@
-﻿using hosman_api.Data;
-using hosman_api.Models;
+﻿using hosman_api.Models;
 
 namespace hosman_api.Interface
 {
@@ -7,19 +6,19 @@ namespace hosman_api.Interface
     {
         public List<DanhSachNguoiTroModel> GetAllItems();
 
-        public bool PostNewItem(DanhSachNguoiTro newItem);
+        public bool PostNewItem(DanhSachNguoiTroModel newItem);
 
-        public DanhSachNguoiTro GetItemByID(string maNguoiTro);
+        public DanhSachNguoiTroModel GetItemByID(string maNguoiTro);
 
         public bool RemoveItem(string maNguoiTro);
 
-        public bool PutItem(DanhSachNguoiTro updateItem);
+        public bool PutItem(DanhSachNguoiTroModel updateItem);
 
         public bool ItemExistsByID(string maNguoiTro);
 
-        public List<DanhSachNguoiTro> GetItemsByChuTro(string maChuTro);
+        public List<DanhSachNguoiTroModel> GetItemsByChuTro(string maChuTro);
 
-        public List<DanhSachNguoiTro> GetItemsByHopDong(string maHopDong);
+        public List<DanhSachNguoiTroModel> GetItemsByHopDong(string maHopDong);
 
     }
 }
