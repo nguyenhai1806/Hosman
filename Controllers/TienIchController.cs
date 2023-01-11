@@ -8,17 +8,20 @@ namespace hosman_api.Controllers
     [ApiController]
     public class TienIchController : ControllerBase
     {
-        private readonly ITienIchRepository _repo;
-        public TienIchController(ITienIchRepository repo)
+        private readonly ITienIchRepository _repoTienIch;
+        private readonly IKhuTroRepository _repoKhuTro;
+
+        public TienIchController(ITienIchRepository _repoTienIch, IKhuTroRepository _repoKhuTro)
         {
-            _repo = repo;
+            this._repoTienIch = _repoTienIch;
+            this._repoKhuTro = _repoKhuTro;
         }
         [HttpGet]
         public IActionResult GetAllItems()
         {
             try
             {
-                return Ok(_repo.GetAllItems());
+                return Ok(_repoTienIch.GetAllItems());
             }
             catch (Exception e)
             {
@@ -28,7 +31,7 @@ namespace hosman_api.Controllers
         [HttpGet("{maTienIch}")]
         public IActionResult GetItemByID(string maTienIch)
         {
-            TienIchModel item = _repo.GetItemByID(maTienIch);
+            TienIchModel item = _repoTienIch.GetItemByID(maTienIch);
             return item == null ? NotFound() : Ok(item);
         }
 
@@ -39,7 +42,7 @@ namespace hosman_api.Controllers
             {
                 //TODO Kiểm tra có trùng tên hay không
                 newItem.MaTienIch = Guid.NewGuid().ToString();
-                return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
+                return _repoTienIch.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)
             {
@@ -53,7 +56,7 @@ namespace hosman_api.Controllers
             //TODO Kiểm tra có trùng tên hay không
             if (maTienIch != updateItem.MaTienIch)
                 return NotFound();
-            return _repo.PutItem(updateItem) ? Ok() : BadRequest();
+            return _repoTienIch.PutItem(updateItem) ? Ok() : BadRequest();
         }
 
         [HttpDelete("{maTienIch}")]
@@ -61,9 +64,67 @@ namespace hosman_api.Controllers
         {
             try
             {
-                if (_repo.GetItemByID(maTienIch) == null)
+                if (_repoTienIch.GetItemByID(maTienIch) == null)
                     return NotFound();
-                return _repo.RemoveItem(maTienIch) ? Ok() : BadRequest();
+                return _repoTienIch.RemoveItem(maTienIch) ? Ok() : BadRequest();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("KhuTro/{maKhuTro}")]
+        public IActionResult GetTienIchByKhuTro(string maKhuTro)
+        {
+            try
+            {
+                if (_repoKhuTro.GetItemByID(maKhuTro) == null)
+                    return NotFound();
+                else
+                {
+                    return Ok(_repoTienIch.GetTienIchByKhuTro(maKhuTro));
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost("KhuTro")]
+        public IActionResult PostTienIchKhuTro(KhuTroTienIch khutroTienIch)
+        {
+            try
+            {
+                if (_repoKhuTro.GetItemByID(khutroTienIch.MaKhuTro) == null)
+                    return NotFound();
+                if (_repoTienIch.GetItemByID(khutroTienIch.MaTienIch) == null)
+                    return NotFound();
+                else
+                {
+                    return _repoTienIch.PostTienIchKhuTro(khutroTienIch) ? Ok() : BadRequest();
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("KhuTro")]
+        public IActionResult DeleteTienIchKhuTro(KhuTroTienIch khutroTienIch)
+        {
+            try
+            {
+                if (_repoKhuTro.GetItemByID(khutroTienIch.MaKhuTro) == null)
+                    return NotFound();
+                if (_repoTienIch.GetItemByID(khutroTienIch.MaTienIch) == null)
+                    return NotFound();
+                else
+                {
+                    return _repoTienIch.DeleteTienIchKhuTro(khutroTienIch) ? Ok() : BadRequest();
+                }
             }
             catch (Exception e)
             {
