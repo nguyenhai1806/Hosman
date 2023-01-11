@@ -143,7 +143,7 @@ CREATE TABLE LoaiPhong_Phong
 
 CREATE TABLE PhieuCocGiuPhong
 (
-    MaPhieuCoc     CHAR(36)   PRIMARY KEY,
+    MaPhieuCoc     CHAR(36)       PRIMARY KEY,
     NgayCoc        DATE           NOT NULL DEFAULT GETDATE(),
     NgayDuKienVaoO DATE           NOT NULL,
     SoTien         DECIMAL(19, 4) NOT NULL,
@@ -267,7 +267,7 @@ CREATE TABLE HoaDon_Dien
     BanGhiSoDau  CHAR(36)       NOT NULL,
     BanGhiSoCuoi CHAR(36)       NOT NULL,
     DonGia       DECIMAL(19, 4) NOT NULL,
-    ThanhTien    DECIMAL(19, 4) NOT NULL,
+    SoLuong      INT            NOT NULL,
     CONSTRAINT FK_HoaDonDien_SoDau FOREIGN KEY (BanGhiSoDau) REFERENCES dbo.DongHoDien (MaBanGhi),
     CONSTRAINT FK_HoaDonDien_SoCuoi FOREIGN KEY (BanGhiSoCuoi) REFERENCES dbo.DongHoDien (MaBanGhi),
     CONSTRAINT FK_MaHoaDon FOREIGN KEY (MaHoaDon) REFERENCES dbo.HoaDon (MaHoaDon),
@@ -288,7 +288,7 @@ CREATE TABLE HoaDon_Nuoc
     BanGhiSoDau  CHAR(36)       NOT NULL,
     BanGhiSoCuoi CHAR(36)       NOT NULL,
     DonGia       DECIMAL(19, 4) NOT NULL,
-    ThanhTien    DECIMAL(19, 4) NOT NULL,
+    SoLuong      INT            NOT NULL,
     CONSTRAINT FK_HoaDonNuoc_SoDau FOREIGN KEY (BanGhiSoDau) REFERENCES dbo.DongHoNuoc (MaBanGhi),
     CONSTRAINT FK_HoaDonNuoc_SoCuoi FOREIGN KEY (BanGhiSoCuoi) REFERENCES dbo.DongHoNuoc (MaBanGhi),
     CONSTRAINT FK_HoaDonNuoc_HoaDon FOREIGN KEY (MaHoaDon) REFERENCES dbo.HoaDon (MaHoaDon),

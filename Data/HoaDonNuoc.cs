@@ -13,7 +13,7 @@ public partial class HoaDonNuoc
 
     public decimal DonGia { get; set; }
 
-    public decimal ThanhTien { get; set; }
+    public int? SoLuong { get; set; }
 
     public virtual DongHoNuoc BanGhiSoCuoiNavigation { get; set; } = null!;
 

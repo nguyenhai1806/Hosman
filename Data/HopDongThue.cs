@@ -25,5 +25,4 @@ public partial class HopDongThue
     public virtual ICollection<PhuLuc> PhuLucs { get; } = new List<PhuLuc>();
 
     public virtual ICollection<YeuCauSuaChua> YeuCauSuaChuas { get; } = new List<YeuCauSuaChua>();
-
 }
