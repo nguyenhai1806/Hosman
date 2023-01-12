@@ -6,5 +6,6 @@ namespace hosman_api.Interface
     {
         public List<HoaDon> GetAllItems();
         public HoaDon GetItemByID(string maHoaDon);
+        public bool PostNewItem(HoaDon hd);
     }
 }

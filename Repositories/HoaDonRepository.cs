@@ -34,5 +34,22 @@ namespace hosman_api.Repositories
             _context.Entry(hd).Collection(h => h.MaPhieuChis);
             return hd;
         }
+
+        public bool PostNewItem(HoaDon hd)
+        {
+            var dbContextTransaction = _context.Database.BeginTransaction();
+            try
+            {
+                _context.HoaDons.Add(hd);
+                int result = _context.SaveChanges();
+                dbContextTransaction.Commit();
+                return result > 0;
+            }
+            catch (Exception)
+            {
+                dbContextTransaction.Rollback();
+                return false;
+            }
+        }
     }
 }
