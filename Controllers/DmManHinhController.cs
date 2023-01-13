@@ -1,5 +1,4 @@
-﻿using hosman_api.Data;
-using hosman_api.Interface;
+﻿using hosman_api.Interface;
 using hosman_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,7 +37,6 @@ namespace hosman_api.Controllers
         {
             try
             {
-                //TODO Kiểm tra tên xem có trùng không
                 List<DmManHinhModel> listDmManHinh = _repo.GetAllItems();
                 foreach (var dv in listDmManHinh)
                 {
@@ -57,7 +55,6 @@ namespace hosman_api.Controllers
         [HttpPut("{maManHinh}")]
         public IActionResult PutItem(string maManHinh, DmManHinhModel updateItem)
         {
-            //TODO sửa code Repo cho update được
             if (maManHinh != updateItem.MaManHinh)
                 return NotFound();
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();

@@ -40,7 +40,6 @@ namespace hosman_api.Controllers
         {
             try
             {
-                //TODO Kiểm tra có trùng tên hay không
                 List<TienIchModel> listTienTich = _repo.GetAllItems();
                 foreach (var p in listTienTich)
                 {
@@ -59,11 +58,10 @@ namespace hosman_api.Controllers
         [HttpPut("{maTienIch}")]
         public IActionResult PutItem(string maTienIch, TienIchModel updateItem)
         {
-            //TODO Kiểm tra có trùng tên hay không
             List<TienIchModel> listTienTich = _repo.GetAllItems();
             foreach (var p in listTienTich)
             {
-                if (p.TenTienIch == updateItem.TenTienIch)
+                if (p.TenTienIch == updateItem.TenTienIch & p.MaTienIch != p.TenTienIch)
                     return BadRequest("Tên tiện ích đã trùng tên tiện ích trước!");
             }
             if (maTienIch != updateItem.MaTienIch)

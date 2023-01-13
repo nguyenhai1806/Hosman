@@ -37,7 +37,6 @@ namespace hosman_api.Controllers
         {
             try
             {
-                //TODO Kiểm tra chỉ số sau >= chỉ số trước
                 List<DongHoDienModel> listDongHoDien = _repo.GetDongHoDienByPhong(newItem.MaPhong);
                 foreach (var h in listDongHoDien)
                 {
@@ -56,7 +55,6 @@ namespace hosman_api.Controllers
         [HttpPut("{maBanGhi}")]
         public IActionResult PutItem(string maBanGhi, DongHoDienModel updateItem)
         {
-            //TODO Kiểm tra chỉ số sau >= chỉ số trước
             List<DongHoDienModel> listDongHoDien = _repo.GetDongHoDienByPhong(updateItem.MaPhong);
             foreach (var h in listDongHoDien)
             {

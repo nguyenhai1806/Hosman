@@ -55,7 +55,6 @@ namespace hosman_api.Controllers
                 return BadRequest(e.Message);
             }
         }
-        //TODO Them PutItem
         [HttpPut("{maDangKy}")]
         public IActionResult PutItem(string maDangKy, DangKyXemPhongModel updateItem)
         {

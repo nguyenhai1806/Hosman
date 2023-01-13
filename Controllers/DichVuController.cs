@@ -32,13 +32,12 @@ namespace hosman_api.Controllers
         {
             try
             {
-                //TODO Kiểm tra tên dịch vụ xem có trùng không
                 List<DichVuModel> listDichVu = _repo.GetAllItems();
-                foreach(var dv in listDichVu)
+                foreach (var dv in listDichVu)
                 {
-                    if(dv.TenDichVu == newItem.TenDichVu)
+                    if (dv.TenDichVu == newItem.TenDichVu)
                         return BadRequest("Dịch Vụ Đã Trùng Tên!");
-                }    
+                }
                 newItem.MaDichVu = Guid.NewGuid().ToString();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
@@ -51,15 +50,14 @@ namespace hosman_api.Controllers
         [HttpPut("{maDichVu}")]
         public IActionResult PutItem(string maDichVu, DichVuModel updateItem)
         {
-            //TODO Kiểm tra tên dịch vụ xem có trùng không
+            if (maDichVu != updateItem.MaDichVu)
+                return NotFound();
             List<DichVuModel> listDichVu = _repo.GetAllItems();
             foreach (var dv in listDichVu)
             {
-                if (dv.TenDichVu == updateItem.TenDichVu)
+                if (dv.TenDichVu == updateItem.TenDichVu && dv.MaDichVu != updateItem.MaDichVu)
                     return BadRequest("Dịch Vụ Đã Trùng Tên!");
             }
-            if (maDichVu != updateItem.MaDichVu)
-                return NotFound();
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();
         }
 

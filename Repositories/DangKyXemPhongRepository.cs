@@ -50,7 +50,7 @@ namespace hosman_api.Repositories
             return _context.SaveChanges() > 0;
         }
 
-        
+
 
         public bool RemoveItem(string maDangKy)
         {
@@ -65,7 +65,6 @@ namespace hosman_api.Repositories
                 return false;
             }
         }
-        //TODO Thêm PutItem
         public bool PutItem(DangKyXemPhongModel updateItem)
         {
             DangKyXemPhong dangKyXemPhong = _context.DangKyXemPhongs.Find(updateItem.MaDangKy);

@@ -23,8 +23,6 @@ namespace hosman_api.Controllers
         {
             try
             {
-                //TODO Kiểm tra mã phòng
-
                 List<HopDongThueModel> list = _repoHopDong.GetHopDongByPhong(maPhong);
                 return Ok(list);
             }
