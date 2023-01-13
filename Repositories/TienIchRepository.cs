@@ -62,5 +62,27 @@ namespace hosman_api.Repositories
                 return false;
             }
         }
+        public List<TienIchModel> GetTienIchByKhuTro(string maKhuTro)
+        {
+            KhuTro kt = _context.KhuTros.Find(maKhuTro);
+            _context.Entry(kt).Collection(u => u.MaTienIches).Load();
+            List<TienIch> listTienIch = kt.MaTienIches.ToList();
+            return _mapper.Map<List<TienIchModel>>(listTienIch);
+        }
+        public bool PostTienIchKhuTro(KhuTroTienIch khutroTienIch)
+        {
+            KhuTro kt = _context.KhuTros.Find(khutroTienIch.MaKhuTro);
+            TienIch tienIch = _context.TienIches.Find(khutroTienIch.MaTienIch);
+            kt.MaTienIches.Add(tienIch);
+            return _context.SaveChanges() > 0;
+        }
+        public bool DeleteTienIchKhuTro(KhuTroTienIch khutroTienIch)
+        {
+            KhuTro kt = _context.KhuTros.Find(khutroTienIch.MaKhuTro);
+            TienIch tienIch = _context.TienIches.Find(khutroTienIch.MaTienIch);
+            _context.Entry(kt).Collection(u => u.MaTienIches).Load();
+            kt.MaTienIches.Remove(tienIch);
+            return _context.SaveChanges() > 0;
+        }
     }
 }

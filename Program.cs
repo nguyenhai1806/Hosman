@@ -15,6 +15,9 @@ builder.Services.AddDbContext<Hosman123Context>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringLocal"));
 });
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 builder.Services.AddAutoMapper(typeof(Program));
 
 //Register Repositories
@@ -37,6 +40,8 @@ builder.Services.AddScoped<ITienIchRepository, TienIchRepository>();
 builder.Services.AddScoped<IYeuCauSuaChuaRepository, YeuCauSuaChuaRepository>();
 builder.Services.AddScoped<IHopDongRepository, HopDongThueRepository>();
 builder.Services.AddScoped<IDichVuKhuTroRespository, DichVuKhuTroRepository>();
+builder.Services.AddScoped<IDichVuPhongRespository, DichVuPhongRespository>();
+builder.Services.AddScoped<IHoaDonRepository, HoaDonRepository>();
 
 var app = builder.Build();
 

@@ -35,7 +35,7 @@ namespace hosman_api.Repositories
 
         public KhuTroModel GetItemByID(string maKhuTro)
         {
-            var khuTro = _context.KhuTros.Find(maKhuTro);
+            KhuTro khuTro = _context.KhuTros.Find(maKhuTro);
             return _mapper.Map<KhuTroModel>(khuTro);
         }
 

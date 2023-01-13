@@ -1,4 +1,7 @@
-﻿namespace hosman_api.Data;
+﻿using System;
+using System.Collections.Generic;
+
+namespace hosman_api.Data;
 
 public partial class TienIch
 {

@@ -65,11 +65,12 @@ public partial class Hosman123Context : DbContext
 
     public virtual DbSet<YeuCauSuaChua> YeuCauSuaChuas { get; set; }
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<BinhLuan>(entity =>
         {
-            entity.HasKey(e => e.MaBinhLuan).HasName("PK__BinhLuan__87CB66A045033F62");
+            entity.HasKey(e => e.MaBinhLuan).HasName("PK__BinhLuan__87CB66A0D893389B");
 
             entity.ToTable("BinhLuan");
 
@@ -101,7 +102,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DangKyXemPhong>(entity =>
         {
-            entity.HasKey(e => e.MaDangKy).HasName("PK__DangKyXe__BA90F02DD4425758");
+            entity.HasKey(e => e.MaDangKy).HasName("PK__DangKyXe__BA90F02D1F13F5AD");
 
             entity.ToTable("DangKyXemPhong");
 
@@ -134,7 +135,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DanhSachNguoiTro>(entity =>
         {
-            entity.HasKey(e => e.MaNguoiTro).HasName("PK__DanhSach__F9292A80E7433266");
+            entity.HasKey(e => e.MaNguoiTro).HasName("PK__DanhSach__F9292A8064CFC6EE");
 
             entity.ToTable("DanhSachNguoiTro");
 
@@ -172,7 +173,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DichVu>(entity =>
         {
-            entity.HasKey(e => e.MaDichVu).HasName("PK__DichVu__C0E6DE8FBAE1C755");
+            entity.HasKey(e => e.MaDichVu).HasName("PK__DichVu__C0E6DE8FEB75D7D1");
 
             entity.ToTable("DichVu");
 
@@ -243,11 +244,11 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DmManHinh>(entity =>
         {
-            entity.HasKey(e => e.MaManHinh).HasName("PK__DM_ManHi__D84939223250585A");
+            entity.HasKey(e => e.MaManHinh).HasName("PK__DM_ManHi__D84939224AFDB6DE");
 
             entity.ToTable("DM_ManHinh");
 
-            entity.HasIndex(e => e.TenManHinh, "UQ__DM_ManHi__6A9FD4D7BD1F1232").IsUnique();
+            entity.HasIndex(e => e.TenManHinh, "UQ__DM_ManHi__6A9FD4D7F0BC85EE").IsUnique();
 
             entity.Property(e => e.MaManHinh)
                 .HasMaxLength(36)
@@ -258,7 +259,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DongHoDien>(entity =>
         {
-            entity.HasKey(e => e.MaBanGhi).HasName("PK__DongHoDi__49DB9535E368F605");
+            entity.HasKey(e => e.MaBanGhi).HasName("PK__DongHoDi__49DB9535DD3D1673");
 
             entity.ToTable("DongHoDien");
 
@@ -280,7 +281,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<DongHoNuoc>(entity =>
         {
-            entity.HasKey(e => e.MaBanGhi).HasName("PK__DongHoNu__49DB9535A554F44B");
+            entity.HasKey(e => e.MaBanGhi).HasName("PK__DongHoNu__49DB9535F49185B4");
 
             entity.ToTable("DongHoNuoc");
 
@@ -302,7 +303,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<HoaDon>(entity =>
         {
-            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon__835ED13B3508F923");
+            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon__835ED13B912CC9F2");
 
             entity.ToTable("HoaDon");
 
@@ -363,7 +364,6 @@ public partial class Hosman123Context : DbContext
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.DonGia).HasColumnType("decimal(19, 4)");
-            entity.Property(e => e.ThanhTien).HasColumnType("decimal(19, 4)");
 
             entity.HasOne(d => d.MaDichVuNavigation).WithMany(p => p.HoaDonDichVus)
                 .HasForeignKey(d => d.MaDichVu)
@@ -378,7 +378,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<HoaDonDien>(entity =>
         {
-            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon_D__835ED13BB4CED55A");
+            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon_D__835ED13B2670BE4F");
 
             entity.ToTable("HoaDon_Dien");
 
@@ -395,7 +395,6 @@ public partial class Hosman123Context : DbContext
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.DonGia).HasColumnType("decimal(19, 4)");
-            entity.Property(e => e.ThanhTien).HasColumnType("decimal(19, 4)");
 
             entity.HasOne(d => d.BanGhiSoCuoiNavigation).WithMany(p => p.HoaDonDienBanGhiSoCuoiNavigations)
                 .HasForeignKey(d => d.BanGhiSoCuoi)
@@ -415,7 +414,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<HoaDonNuoc>(entity =>
         {
-            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon_N__835ED13B617CC94B");
+            entity.HasKey(e => e.MaHoaDon).HasName("PK__HoaDon_N__835ED13B3B80D8D4");
 
             entity.ToTable("HoaDon_Nuoc");
 
@@ -432,7 +431,6 @@ public partial class Hosman123Context : DbContext
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.DonGia).HasColumnType("decimal(19, 4)");
-            entity.Property(e => e.ThanhTien).HasColumnType("decimal(19, 4)");
 
             entity.HasOne(d => d.BanGhiSoCuoiNavigation).WithMany(p => p.HoaDonNuocBanGhiSoCuoiNavigations)
                 .HasForeignKey(d => d.BanGhiSoCuoi)
@@ -452,7 +450,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<HopDongThue>(entity =>
         {
-            entity.HasKey(e => e.MaHopDong).HasName("PK__HopDongT__36DD4342854281B4");
+            entity.HasKey(e => e.MaHopDong).HasName("PK__HopDongT__36DD434201E90A2A");
 
             entity.ToTable("HopDongThue");
 
@@ -485,7 +483,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<KhuTro>(entity =>
         {
-            entity.HasKey(e => e.MaKhuTro).HasName("PK__KhuTro__05E24E48D539CC4C");
+            entity.HasKey(e => e.MaKhuTro).HasName("PK__KhuTro__05E24E483CA3DB0A");
 
             entity.ToTable("KhuTro");
 
@@ -511,11 +509,11 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<LoaiPhong>(entity =>
         {
-            entity.HasKey(e => e.MaLoai).HasName("PK__LoaiPhon__730A5759BD2C2564");
+            entity.HasKey(e => e.MaLoai).HasName("PK__LoaiPhon__730A575930269727");
 
             entity.ToTable("LoaiPhong");
 
-            entity.HasIndex(e => e.TenLoai, "UQ__LoaiPhon__E29B10422DF62EA6").IsUnique();
+            entity.HasIndex(e => e.TenLoai, "UQ__LoaiPhon__E29B10429ECC46D9").IsUnique();
 
             entity.Property(e => e.MaLoai)
                 .HasMaxLength(36)
@@ -544,13 +542,13 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<NguoiDung>(entity =>
         {
-            entity.HasKey(e => e.MaNguoiDung).HasName("PK__NguoiDun__C539D762F4D7AEC6");
+            entity.HasKey(e => e.MaNguoiDung).HasName("PK__NguoiDun__C539D762BBD78D48");
 
             entity.ToTable("NguoiDung");
 
-            entity.HasIndex(e => e.SoDienThoai, "UQ__NguoiDun__0389B7BD44BF2100").IsUnique();
+            entity.HasIndex(e => e.SoDienThoai, "UQ__NguoiDun__0389B7BDE0BD2396").IsUnique();
 
-            entity.HasIndex(e => e.Cccd, "UQ__NguoiDun__A955A0AA274334C3").IsUnique();
+            entity.HasIndex(e => e.Cccd, "UQ__NguoiDun__A955A0AA1071230D").IsUnique();
 
             entity.Property(e => e.MaNguoiDung)
                 .HasMaxLength(36)
@@ -575,7 +573,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<PhieuChi>(entity =>
         {
-            entity.HasKey(e => e.MaPhieuChi).HasName("PK__PhieuChi__00AC0F1936E27487");
+            entity.HasKey(e => e.MaPhieuChi).HasName("PK__PhieuChi__00AC0F19D6AF8D90");
 
             entity.ToTable("PhieuChi");
 
@@ -603,7 +601,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<PhieuCocGiuPhong>(entity =>
         {
-            entity.HasKey(e => e.MaPhieuCoc).HasName("PK__PhieuCoc__00AC24AA3259B1F2");
+            entity.HasKey(e => e.MaPhieuCoc).HasName("PK__PhieuCoc__00AC24AA6A622373");
 
             entity.ToTable("PhieuCocGiuPhong");
 
@@ -639,7 +637,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<Phong>(entity =>
         {
-            entity.HasKey(e => e.MaPhong).HasName("PK__Phong__20BD5E5B6857BB81");
+            entity.HasKey(e => e.MaPhong).HasName("PK__Phong__20BD5E5B445360ED");
 
             entity.ToTable("Phong", tb =>
                 {
@@ -667,7 +665,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<PhuLuc>(entity =>
         {
-            entity.HasKey(e => e.MaPhuLuc).HasName("PK__PhuLuc__FB0ECCD85E430FB7");
+            entity.HasKey(e => e.MaPhuLuc).HasName("PK__PhuLuc__FB0ECCD8D10E9CD3");
 
             entity.ToTable("PhuLuc");
 
@@ -719,11 +717,11 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<QlNhomNguoiDung>(entity =>
         {
-            entity.HasKey(e => e.MaNhom).HasName("PK__QL_NhomN__234F91CD5BF5287F");
+            entity.HasKey(e => e.MaNhom).HasName("PK__QL_NhomN__234F91CD8B5DBA4E");
 
             entity.ToTable("QL_NhomNguoiDung");
 
-            entity.HasIndex(e => e.TenNhom, "UQ__QL_NhomN__2B432D0D3807E716").IsUnique();
+            entity.HasIndex(e => e.TenNhom, "UQ__QL_NhomN__2B432D0DDC727335").IsUnique();
 
             entity.Property(e => e.MaNhom)
                 .HasMaxLength(36)
@@ -761,11 +759,11 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<TienIch>(entity =>
         {
-            entity.HasKey(e => e.MaTienIch).HasName("PK__TienIch__4697D8EA77D26D72");
+            entity.HasKey(e => e.MaTienIch).HasName("PK__TienIch__4697D8EA9ED5D5FE");
 
             entity.ToTable("TienIch");
 
-            entity.HasIndex(e => e.TenTienIch, "UQ__TienIch__0DE17DA82736E224").IsUnique();
+            entity.HasIndex(e => e.TenTienIch, "UQ__TienIch__0DE17DA887D006F7").IsUnique();
 
             entity.Property(e => e.MaTienIch)
                 .HasMaxLength(36)
@@ -794,7 +792,7 @@ public partial class Hosman123Context : DbContext
 
         modelBuilder.Entity<YeuCauSuaChua>(entity =>
         {
-            entity.HasKey(e => e.MaYeuCau).HasName("PK__YeuCauSu__CFA5DF4EA2F954C9");
+            entity.HasKey(e => e.MaYeuCau).HasName("PK__YeuCauSu__CFA5DF4E3D2B1D80");
 
             entity.ToTable("YeuCauSuaChua");
 

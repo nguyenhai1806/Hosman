@@ -15,31 +15,26 @@ namespace hosman_api.Repositories
             _context = context;
             _mapper = mapper;
         }
-
         public List<DichVuModel> GetAllItems()
         {
             List<DichVu> dichVus = _context.DichVus.ToList();
             return _mapper.Map<List<DichVuModel>>(dichVus);
         }
-
         public DichVuModel GetItemByID(string maDichVu)
         {
             var dichVu = _context.DichVus.Find(maDichVu);
             return _mapper.Map<DichVuModel>(dichVu);
         }
-
         public bool ItemExistsByID(string maDichVu)
         {
             return _context.DichVus.Any(e => e.MaDichVu == maDichVu);
         }
-
         public bool PostNewItem(DichVuModel item)
         {
             var dichVu = _mapper.Map<DichVu>(item);
             _context.DichVus.Add(dichVu);
             return _context.SaveChanges() > 0;
         }
-
         public bool PutItem(DichVuModel updateItem)
         {
             DichVu dichVu = _context.DichVus.Find(updateItem.MaDichVu);
@@ -48,7 +43,6 @@ namespace hosman_api.Repositories
             //_context.DichVus.Update(dichVu);
             return _context.SaveChanges() > 0;
         }
-
         public bool RemoveItem(string maDichVu)
         {
             var dichVu = _context.DichVus.Find(maDichVu);
