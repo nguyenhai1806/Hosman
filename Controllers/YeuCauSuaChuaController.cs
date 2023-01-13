@@ -1,4 +1,5 @@
-﻿using hosman_api.Interface;
+﻿using hosman_api.Data;
+using hosman_api.Interface;
 using hosman_api.Models;
 using Microsoft.AspNetCore.Mvc;
 

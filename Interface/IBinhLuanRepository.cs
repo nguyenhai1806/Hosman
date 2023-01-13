@@ -15,6 +15,8 @@ namespace hosman_api.Interface
         public bool ItemExistsByID(string maBinhLuan);
 
         public bool RemoveItem(string maBinhLuan);
-        
+        public bool PutItem(BinhLuanModel updateItem);
+
+
     }
 }

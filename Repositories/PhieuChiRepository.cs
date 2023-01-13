@@ -37,8 +37,14 @@ namespace hosman_api.Repositories
 
         public bool PutItem(PhieuChiModel updateItem)
         {
-            PhieuChi phieuChi = _mapper.Map<PhieuChi>(updateItem);
-            _context.PhieuChis.Update(phieuChi);
+            PhieuChi phieuChi = _context.PhieuChis.Find(updateItem.MaPhieuChi);
+            phieuChi.ChiPhi = updateItem.ChiPhi;
+            phieuChi.ChiTietChi = updateItem.ChiTietChi;
+            phieuChi.GhiChu = updateItem.GhiChu;
+            phieuChi.NgayChi = updateItem.NgayChi;
+            phieuChi.TienKhachTra = updateItem.TienKhachTra;
+            phieuChi.MaKhuTro= updateItem.MaKhuTro;
+            //_context.PhieuChis.Update(phieuChi);
             return _context.SaveChanges() > 0;
         }
 

@@ -39,6 +39,12 @@ namespace hosman_api.Controllers
             try
             {
                 //TODO Kiểm tra chỉ số sau >= chỉ số trước
+                List<DongHoNuocModel> listDongHoNuoc = _repo.GetDongHoNuocByPhong(newItem.MaPhong);
+                foreach (var h in listDongHoNuoc)
+                {
+                    if (h.ChiSoNuoc > newItem.ChiSoNuoc && h.NgayGhi.Ticks <= newItem.NgayGhi.Ticks)
+                        return BadRequest("Đồng hồ nước sai!");
+                }
                 newItem.MaBanGhi = Guid.NewGuid().ToString();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
@@ -51,6 +57,12 @@ namespace hosman_api.Controllers
         [HttpPut("{maBanGhi}")]
         public IActionResult PutItem(string maBanGhi, DongHoNuocModel updateItem)
         {
+            List<DongHoNuocModel> listDongHoNuoc = _repo.GetDongHoNuocByPhong(updateItem.MaPhong);
+            foreach (var h in listDongHoNuoc)
+            {
+                if (h.ChiSoNuoc > updateItem.ChiSoNuoc && h.NgayGhi.Ticks <= updateItem.NgayGhi.Ticks)
+                    return BadRequest("Đồng hồ nước sai!");
+            }
             if (maBanGhi != updateItem.MaBanGhi)
                 return NotFound();
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();

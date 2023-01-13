@@ -38,6 +38,12 @@ namespace hosman_api.Controllers
             try
             {
                 //TODO Kiểm tra tên có trùng không
+                List<LoaiPhongModel> listLoaiPhong = _repo.GetAllItems();
+                foreach (var dv in listLoaiPhong)
+                {
+                    if (dv.TenLoai == newItem.TenLoai)
+                        return BadRequest("Tên Loại Phòng đã trùng!");
+                }
                 newItem.MaLoai = Guid.NewGuid().ToString();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
@@ -51,6 +57,12 @@ namespace hosman_api.Controllers
         public IActionResult PutItem(string maLoaiPhong, LoaiPhongModel updateItem)
         {
             //TODO Kiểm tra tên có trùng không
+            List<LoaiPhongModel> listLoaiPhong = _repo.GetAllItems();
+            foreach (var dv in listLoaiPhong)
+            {
+                if (dv.TenLoai == updateItem.TenLoai)
+                    return BadRequest("Tên Loại Phòng đã trùng!");
+            }
             if (maLoaiPhong != updateItem.MaLoai)
                 return NotFound();
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();

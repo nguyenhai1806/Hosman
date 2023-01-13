@@ -45,7 +45,7 @@ namespace hosman_api.Repositories
             DichVu dichVu = _context.DichVus.Find(updateItem.MaDichVu);
             dichVu.TenDichVu = updateItem.TenDichVu;
             dichVu.DonViTinh = updateItem.DonViTinh;
-            _context.DichVus.Update(dichVu);
+            //_context.DichVus.Update(dichVu);
             return _context.SaveChanges() > 0;
         }
 

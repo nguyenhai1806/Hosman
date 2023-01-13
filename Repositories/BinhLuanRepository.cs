@@ -40,6 +40,8 @@ namespace hosman_api.Repositories
             return _context.SaveChanges() > 0;
         }
 
+        
+
         public bool RemoveItem(string maBinhLuan)
         {
             var binhLuan = _context.BinhLuans.Find(maBinhLuan);
@@ -54,5 +56,17 @@ namespace hosman_api.Repositories
             }
         }
         //TODO Thêm PutItem
+        public bool PutItem(BinhLuanModel updateItem)
+        {
+            BinhLuan binhLuan = _context.BinhLuans.Find(updateItem.MaBinhLuan);
+            binhLuan.NguoiBinhLuan = updateItem.NguoiBinhLuan;
+            binhLuan.Ngay = updateItem.Ngay;
+            binhLuan.NoiDung = updateItem.NoiDung;
+            binhLuan.HinhAnh= updateItem.HinhAnh;
+            binhLuan.TrangThai = updateItem.TrangThai;
+            binhLuan.ChuTro = updateItem.ChuTro;
+            //_context.BinhLuans.Update(binhLuan);
+            return _context.SaveChanges() > 0;
+        }
     }
 }

@@ -52,8 +52,10 @@ namespace hosman_api.Repositories
 
         public bool PutItem(LoaiPhongModel updateItem)
         {
-            LoaiPhong loaiPhong = _mapper.Map<LoaiPhong>(updateItem);
-            _context.LoaiPhongs.Update(loaiPhong);
+            LoaiPhong loaiPhong = _context.LoaiPhongs.Find(updateItem.MaLoai);
+            loaiPhong.TenLoai = updateItem.TenLoai;
+            loaiPhong.GhiChu = updateItem.GhiChu;
+            //_context.LoaiPhongs.Update(loaiPhong);
             return _context.SaveChanges() > 0;
         }
     }

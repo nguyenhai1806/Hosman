@@ -8,5 +8,6 @@ namespace hosman_api.Interface
         public PhuLucModel GetPhuLucByID(string maPhuLuc);
         public bool DeletePhuLuc(string maPhuLuc);
         public List<PhuLucModel> GetPhuLucByHopDong(string maHopDong);
+        public bool PutItem(PhuLucModel updateItem);
     }
 }

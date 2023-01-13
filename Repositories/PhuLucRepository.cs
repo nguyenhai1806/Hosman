@@ -37,5 +37,17 @@ namespace hosman_api.Repositories
             _context.PhuLucs.Remove(phuLuc);
             return _context.SaveChanges() > 0;
         }
+
+        public bool PutItem(PhuLucModel updateItem)
+        {
+            PhuLuc phuLuc = _context.PhuLucs.Find(updateItem.MaPhuLuc);
+            phuLuc.NgayBatDau = updateItem.NgayBatDau;
+            phuLuc.NgayKetThuc = updateItem.NgayKetThuc;
+            phuLuc.GiaThue = updateItem.GiaThue;
+            phuLuc.GhiChu = updateItem.GhiChu;
+            phuLuc.MaHopDong= updateItem.MaHopDong;
+            //_context.PhuLucs.Update(phuLuc);
+            return _context.SaveChanges() > 0;
+        }
     }
 }

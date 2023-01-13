@@ -42,8 +42,9 @@ namespace hosman_api.Repositories
 
         public bool PutItem(DmManHinhModel updateItem)
         {
-            DmManHinh dmManHinh = _mapper.Map<DmManHinh>(updateItem);
-            _context.DmManHinhs.Update(dmManHinh);
+            DmManHinh dmManHinh = _context.DmManHinhs.Find(updateItem.MaManHinh);
+            dmManHinh.TenManHinh = updateItem.TenManHinh;
+            //_context.DmManHinhs.Update(dmManHinh);
             return _context.SaveChanges() > 0;
         }
 

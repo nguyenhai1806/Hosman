@@ -37,8 +37,19 @@ namespace hosman_api.Repositories
 
         public bool PutItem(NguoiDungModel updateItem)
         {
-            NguoiDung nguoiDung = _mapper.Map<NguoiDung>(updateItem);
-            _context.NguoiDungs.Update(nguoiDung);
+            NguoiDung nguoiDung = _context.NguoiDungs.Find(updateItem.MaNguoiDung);
+            nguoiDung.GioiTinh = updateItem.GioiTinh;
+            nguoiDung.SoDienThoai= updateItem.SoDienThoai;
+            nguoiDung.NgaySinh = updateItem.NgaySinh;
+            nguoiDung.DiaChi= updateItem.DiaChi;
+            nguoiDung.TenNguoiDung = updateItem.TenNguoiDung;
+            nguoiDung.TaiKhoan = updateItem.TaiKhoan;
+            nguoiDung.MatKhau = updateItem.MatKhau;
+            nguoiDung.Cccd= updateItem.Cccd;
+            nguoiDung.AnhCccdtruoc = updateItem.AnhCccdtruoc;
+            nguoiDung.AnhCccdsau = updateItem.AnhCccdsau;
+            nguoiDung.NoiCap = updateItem.NoiCap;
+            //_context.NguoiDungs.Update(nguoiDung);
             return _context.SaveChanges() > 0;
         }
 

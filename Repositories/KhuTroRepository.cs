@@ -55,8 +55,16 @@ namespace hosman_api.Repositories
 
         public bool PutItem(KhuTroModel updateItem)
         {
-            KhuTro khuTro = _mapper.Map<KhuTro>(updateItem);
-            _context.KhuTros.Update(khuTro);
+            KhuTro khuTro = _context.KhuTros.Find(updateItem.MaKhuTro);
+            khuTro.TenKhu = updateItem.TenKhu;
+            khuTro.DiaChi = updateItem.DiaChi;
+            khuTro.SoPhong = updateItem.SoPhong;
+            khuTro.GiaDien = updateItem.GiaDien;
+            khuTro.GiaNuoc = updateItem.GiaNuoc;
+            khuTro.NgayLapHd = updateItem.NgayLapHd;
+            khuTro.HanDongTien = updateItem.HanDongTien;
+            khuTro.MaNguoiDung = updateItem.MaNguoiDung;
+            //_context.KhuTros.Update(khuTro);
             return _context.SaveChanges() > 0;
         }
 

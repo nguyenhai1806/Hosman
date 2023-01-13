@@ -50,6 +50,8 @@ namespace hosman_api.Repositories
             return _context.SaveChanges() > 0;
         }
 
+        
+
         public bool RemoveItem(string maDangKy)
         {
             var dangKyXemPhong = _context.DangKyXemPhongs.Find(maDangKy);
@@ -64,5 +66,17 @@ namespace hosman_api.Repositories
             }
         }
         //TODO Thêm PutItem
+        public bool PutItem(DangKyXemPhongModel updateItem)
+        {
+            DangKyXemPhong dangKyXemPhong = _context.DangKyXemPhongs.Find(updateItem.MaDangKy);
+            dangKyXemPhong.NgayDangKy = updateItem.NgayDangKy;
+            dangKyXemPhong.NgayHenXem = updateItem.NgayHenXem;
+            dangKyXemPhong.GhiChu = updateItem.GhiChu;
+            dangKyXemPhong.TinhTrang = updateItem.TinhTrang;
+            dangKyXemPhong.NguoiDung = updateItem.NguoiDung;
+            dangKyXemPhong.MaPhong = updateItem.MaPhong;
+            //_context.DangKyXemPhongs.Update(dangKyXemPhong);
+            return _context.SaveChanges() > 0;
+        }
     }
 }

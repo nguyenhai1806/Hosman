@@ -28,6 +28,11 @@ namespace hosman_api.Repositories
             return _mapper.Map<PhongModel>(phong);
         }
 
+        public List<PhongModel> GetPhongByKhuTro(string maKhuTro)
+        {
+            return _mapper.Map<List<PhongModel>>(_context.Phongs.Where(x => x.MaKhuTro == maKhuTro));
+        }
+
         public bool PostNewItem(PhongModel newItem)
         {
             var phong = _mapper.Map<Phong>(newItem);
@@ -37,8 +42,15 @@ namespace hosman_api.Repositories
 
         public bool PutItem(PhongModel updateItem)
         {
-            Phong phong = _mapper.Map<Phong>(updateItem);
-            _context.Phongs.Update(phong);
+            Phong phong = _context.Phongs.Find(updateItem.MaPhong);
+            phong.TenPhong = updateItem.TenPhong;
+            phong.GhiChu = updateItem.GhiChu;
+            phong.GiaThue = updateItem.GiaThue;
+            phong.DienTich = updateItem.DienTich;
+            phong.UuTien = updateItem.UuTien;
+            phong.TinhTrang = updateItem.TinhTrang;
+            phong.MaKhuTro = updateItem.MaKhuTro;
+            //_context.Phongs.Update(phong);
             return _context.SaveChanges() > 0;
         }
 

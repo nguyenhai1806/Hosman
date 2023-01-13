@@ -41,7 +41,13 @@ namespace hosman_api.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        [HttpPut("{maBinhLuan}")]
+        public IActionResult PutItem(string maBinhLuan, BinhLuanModel updateItem)
+        {
+            if (maBinhLuan != updateItem.MaBinhLuan)
+                return NotFound();
+            return _repo.PutItem(updateItem) ? Ok() : BadRequest();
+        }
         [HttpDelete("{maBinhLuan}")]
         public IActionResult DeleteItem(string maBinhLuan)
         {

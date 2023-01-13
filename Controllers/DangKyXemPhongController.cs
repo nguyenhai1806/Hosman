@@ -56,5 +56,12 @@ namespace hosman_api.Controllers
             }
         }
         //TODO Them PutItem
+        [HttpPut("{maDangKy}")]
+        public IActionResult PutItem(string maDangKy, DangKyXemPhongModel updateItem)
+        {
+            if (maDangKy != updateItem.MaDangKy)
+                return NotFound();
+            return _repo.PutItem(updateItem) ? Ok() : BadRequest();
+        }
     }
 }

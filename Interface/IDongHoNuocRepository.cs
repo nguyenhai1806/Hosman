@@ -17,6 +17,7 @@ namespace hosman_api.Interface
         public bool RemoveItem(string maBanGhi);
          
         public bool PutItem(DongHoNuocModel updateItem);
-       
+        public List<DongHoNuocModel> GetDongHoNuocByPhong(string maPhong);
+
     }
 }

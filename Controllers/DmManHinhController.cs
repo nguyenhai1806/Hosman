@@ -1,4 +1,5 @@
-﻿using hosman_api.Interface;
+﻿using hosman_api.Data;
+using hosman_api.Interface;
 using hosman_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,6 +39,12 @@ namespace hosman_api.Controllers
             try
             {
                 //TODO Kiểm tra tên xem có trùng không
+                List<DmManHinhModel> listDmManHinh = _repo.GetAllItems();
+                foreach (var dv in listDmManHinh)
+                {
+                    if (dv.TenManHinh == newItem.TenManHinh)
+                        return BadRequest("Tên đã trùng!");
+                }
                 newItem.MaManHinh = Guid.NewGuid().ToString();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }

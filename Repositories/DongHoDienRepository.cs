@@ -22,6 +22,11 @@ namespace hosman_api.Repositories
             return _mapper.Map<List<DongHoDienModel>>(dongHoDiens);
         }
 
+        public List<DongHoDienModel> GetDongHoDienByPhong(string maPhong)
+        {
+            return _mapper.Map<List<DongHoDienModel>>(_context.DongHoDiens.Where(x => x.MaPhong == maPhong));
+        }
+
         public DongHoDienModel GetItemByID(string maBanGhi)
         {
             var dongHoDien = _context.DongHoDiens.Find(maBanGhi);
@@ -42,8 +47,11 @@ namespace hosman_api.Repositories
 
         public bool PutItem(DongHoDienModel updateItem)
         {
-            DongHoDien dongHoDien = _mapper.Map<DongHoDien>(updateItem);
-            _context.DongHoDiens.Update(dongHoDien);
+            DongHoDien dongHoDien = _context.DongHoDiens.Find(updateItem.MaBanGhi);
+            dongHoDien.NgayGhi = updateItem.NgayGhi;
+            dongHoDien.ChiSoDien= updateItem.ChiSoDien;
+            dongHoDien.MaPhong = updateItem.MaPhong;
+            //_context.DongHoDiens.Update(dongHoDien);
             return _context.SaveChanges() > 0;
         }
 

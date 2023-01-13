@@ -38,6 +38,12 @@ namespace hosman_api.Controllers
             try
             {
                 //TODO Kiểm tra chỉ số sau >= chỉ số trước
+                List<DongHoDienModel> listDongHoDien = _repo.GetDongHoDienByPhong(newItem.MaPhong);
+                foreach (var h in listDongHoDien)
+                {
+                    if (h.ChiSoDien > newItem.ChiSoDien && h.NgayGhi.Ticks <= newItem.NgayGhi.Ticks)
+                        return BadRequest("Đồng hồ điện sai!");
+                }
                 newItem.MaBanGhi = Guid.NewGuid().ToString();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
@@ -51,6 +57,12 @@ namespace hosman_api.Controllers
         public IActionResult PutItem(string maBanGhi, DongHoDienModel updateItem)
         {
             //TODO Kiểm tra chỉ số sau >= chỉ số trước
+            List<DongHoDienModel> listDongHoDien = _repo.GetDongHoDienByPhong(updateItem.MaPhong);
+            foreach (var h in listDongHoDien)
+            {
+                if (h.ChiSoDien > updateItem.ChiSoDien && h.NgayGhi.Ticks <= updateItem.NgayGhi.Ticks)
+                    return BadRequest("Đồng hồ điện sai!");
+            }
             if (maBanGhi != updateItem.MaBanGhi)
                 return NotFound();
             return _repo.PutItem(updateItem) ? Ok() : BadRequest();

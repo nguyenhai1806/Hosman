@@ -46,8 +46,13 @@ namespace hosman_api.Repositories
 
         public bool PutItem(YeuCauSuaChuaModel updateItem)
         {
-            YeuCauSuaChua yeuCauSuaChua = _mapper.Map<YeuCauSuaChua>(updateItem);
-            _context.YeuCauSuaChuas.Update(yeuCauSuaChua);
+            YeuCauSuaChua yeuCauSuaChua = _context.YeuCauSuaChuas.Find(updateItem.MaYeuCau);
+            yeuCauSuaChua.NgayYeuCau = updateItem.NgayYeuCau;
+            yeuCauSuaChua.HinhAnh = updateItem.HinhAnh;
+            yeuCauSuaChua.TinhTrang = updateItem.TinhTrang;
+            yeuCauSuaChua.ChiTiet = updateItem.ChiTiet;
+            yeuCauSuaChua.MaHopDong = updateItem.MaHopDong;
+            //_context.YeuCauSuaChuas.Update(yeuCauSuaChua);
             return _context.SaveChanges() > 0;
         }
 

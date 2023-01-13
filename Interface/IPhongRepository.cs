@@ -17,5 +17,6 @@ namespace hosman_api.Interface
 
 
         public bool PutItem(PhongModel updateItem);
+        public List<PhongModel> GetPhongByKhuTro(string maKhuTro);
     }
 }

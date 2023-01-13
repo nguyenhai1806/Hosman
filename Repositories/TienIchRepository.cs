@@ -42,8 +42,10 @@ namespace hosman_api.Repositories
 
         public bool PutItem(TienIchModel updateItem)
         {
-            TienIch tienIch = _mapper.Map<TienIch>(updateItem);
-            _context.TienIches.Update(tienIch);
+            TienIch tienIch = _context.TienIches.Find(updateItem.MaTienIch);
+            tienIch.TenTienIch = updateItem.TenTienIch;
+            tienIch.GhiChu = updateItem.GhiChu;
+            //_context.TienIches.Update(tienIch);
             return _context.SaveChanges() > 0;
         }
 

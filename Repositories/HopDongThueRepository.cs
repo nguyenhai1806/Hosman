@@ -46,8 +46,13 @@ public class HopDongThueRepository : IHopDongRepository
 
     public bool PutHopDong(HopDongThueModel updateItem)
     {
-        HopDongThue hopDong = _mapper.Map<HopDongThue>(updateItem);
-        _context.HopDongThues.Update(hopDong);
+        HopDongThue hopDong =_context.HopDongThues.Find(updateItem.MaHopDong);
+        hopDong.FileHopDong = updateItem.FileHopDong;
+        hopDong.TienCocDamBao = updateItem.TienCocDamBao;
+        hopDong.TinhTrangCoc = updateItem.TinhTrangCoc;
+        hopDong.MaPhong= updateItem.MaPhong;
+        hopDong.MaNguoiThue = updateItem.MaNguoiThue;
+        //_context.HopDongThues.Update(hopDong);
         return _context.SaveChanges() > 0;
     }
     public HopDongThueModel GetHopDongByID(string maHopDong)

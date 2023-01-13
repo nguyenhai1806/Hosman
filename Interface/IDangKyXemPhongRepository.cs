@@ -16,6 +16,7 @@ namespace hosman_api.Interface
 
         public bool RemoveItem(string maDangKy);
         public List<DangKyXemPhongModel> GetItemsByKhuTro(string maKhuTro);
+        public bool PutItem(DangKyXemPhongModel updateItem);
 
 
     }

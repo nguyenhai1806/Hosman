@@ -53,6 +53,7 @@ namespace hosman_api.Repositories
         {
             DichVuKhuTro dichVuKhuTro = _context.DichVuKhuTros.Find(updateItem.MaDichVu, updateItem.MaKhuTro);
             dichVuKhuTro.DonGia = updateItem.DonGia;
+            //_context.DichVuKhuTros.Update(dichVuKhuTro);
             return _context.SaveChanges() > 0;
         }
     }
