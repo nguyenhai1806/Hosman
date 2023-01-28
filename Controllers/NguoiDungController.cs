@@ -25,6 +25,12 @@ namespace hosman_api.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpPost("/checkLogin")]
+        public IActionResult checkLogin(Login login)
+        {
+            NguoiDungModel nguoiDung = _repo.GetAllItems().Where(ng => ng.TaiKhoan == login.TaiKhoan && ng.MatKhau == login.MatKhau).FirstOrDefault();
+            return nguoiDung == null ? Ok(nguoiDung) : NotFound();
+        }
         [HttpGet("{maNguoiDung}")]
         public IActionResult GetItemByID(string maNguoiDung)
         {

@@ -19,7 +19,12 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 builder.Services.AddAutoMapper(typeof(Program));
-
+builder.Services.AddCors(o => o.AddPolicy("LowCorsPolicy", builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+}));
 //Register Repositories
 builder.Services.AddScoped<IDanhSachNguoiTroRepository, DanhSachNguoiTroRepository>();
 builder.Services.AddScoped<IBinhLuanRepository, BinhLuanRepository>();
@@ -48,6 +53,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseCors("LowCorsPolicy");
     app.UseSwagger();
     app.UseSwaggerUI();
 }

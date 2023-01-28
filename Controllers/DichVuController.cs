@@ -38,7 +38,7 @@ namespace hosman_api.Controllers
                     if (dv.TenDichVu == newItem.TenDichVu)
                         return BadRequest("Dịch Vụ Đã Trùng Tên!");
                 }
-                newItem.MaDichVu = Guid.NewGuid().ToString();
+                newItem.MaDichVu = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)

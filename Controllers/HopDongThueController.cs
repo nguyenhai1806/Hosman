@@ -58,7 +58,7 @@ namespace hosman_api.Controllers
             }
 
             HopDongThueModel hopDong = new HopDongThueModel();
-            string maHopDong = Guid.NewGuid().ToString();
+            string maHopDong = Guid.NewGuid().ToString().ToUpper();
             hopDong.MaHopDong = maHopDong;
             hopDong.FileHopDong = hopDongPhuLuc.FileHopDong;
             hopDong.TienCocDamBao = hopDongPhuLuc.TienCocDamBao;
@@ -67,7 +67,7 @@ namespace hosman_api.Controllers
             hopDong.MaPhong = hopDongPhuLuc.MaPhong;
 
             PhuLucModel phuLuc = new PhuLucModel();
-            phuLuc.MaPhuLuc = Guid.NewGuid().ToString();
+            phuLuc.MaPhuLuc = Guid.NewGuid().ToString().ToUpper();
             phuLuc.MaHopDong = maHopDong;
             phuLuc.GiaThue = hopDongPhuLuc.GiaThue;
             phuLuc.NgayBatDau = hopDongPhuLuc.NgayBatDau;

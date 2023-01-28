@@ -47,7 +47,7 @@ namespace hosman_api.Controllers
                         return BadRequest("Tên khu trọ đã tồn tại");
                 }
 
-                newItem.MaKhuTro = Guid.NewGuid().ToString();
+                newItem.MaKhuTro = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)

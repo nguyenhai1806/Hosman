@@ -43,7 +43,7 @@ namespace hosman_api.Controllers
                     if (dv.TenManHinh == newItem.TenManHinh)
                         return BadRequest("Tên đã trùng!");
                 }
-                newItem.MaManHinh = Guid.NewGuid().ToString();
+                newItem.MaManHinh = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)

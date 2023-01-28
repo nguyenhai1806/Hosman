@@ -44,7 +44,7 @@ namespace hosman_api.Controllers
                     if (h.ChiSoNuoc > newItem.ChiSoNuoc && h.NgayGhi.Ticks <= newItem.NgayGhi.Ticks)
                         return BadRequest("Đồng hồ nước sai!");
                 }
-                newItem.MaBanGhi = Guid.NewGuid().ToString();
+                newItem.MaBanGhi = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)

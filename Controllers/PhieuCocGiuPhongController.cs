@@ -33,7 +33,7 @@ namespace hosman_api.Controllers
             try
             {
 
-                newItem.MaPhieuCoc = Guid.NewGuid().ToString();
+                newItem.MaPhieuCoc = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)

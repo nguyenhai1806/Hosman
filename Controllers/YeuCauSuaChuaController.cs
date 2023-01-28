@@ -1,5 +1,4 @@
-﻿using hosman_api.Data;
-using hosman_api.Interface;
+﻿using hosman_api.Interface;
 using hosman_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,7 +37,7 @@ namespace hosman_api.Controllers
         {
             try
             {
-                newItem.MaYeuCau = Guid.NewGuid().ToString();
+                newItem.MaYeuCau = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)

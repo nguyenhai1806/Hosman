@@ -40,7 +40,7 @@ namespace hosman_api.Controllers
         {
             try
             {
-                List<TienIchModel> listTienTich = _repo.GetAllItems();
+                List<TienIchModel> listTienTich = _repoTienIch.GetAllItems();
                 foreach (var p in listTienTich)
                 {
                     if (p.TenTienIch == newItem.TenTienIch)
@@ -58,7 +58,7 @@ namespace hosman_api.Controllers
         [HttpPut("{maTienIch}")]
         public IActionResult PutItem(string maTienIch, TienIchModel updateItem)
         {
-            List<TienIchModel> listTienTich = _repo.GetAllItems();
+            List<TienIchModel> listTienTich = _repoTienIch.GetAllItems();
             foreach (var p in listTienTich)
             {
                 if (p.TenTienIch == updateItem.TenTienIch & p.MaTienIch != p.TenTienIch)

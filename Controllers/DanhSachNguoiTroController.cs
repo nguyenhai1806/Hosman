@@ -38,7 +38,7 @@ namespace hosman_api.Controllers
             try
             {
 
-                newItem.MaNguoiTro = Guid.NewGuid().ToString();
+                newItem.MaNguoiTro = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)

@@ -23,7 +23,7 @@ namespace hosman_api.Controllers
         {
             try
             {
-                string maHoaDon = Guid.NewGuid().ToString();
+                string maHoaDon = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok() : BadRequest();
             }
             catch (Exception e)

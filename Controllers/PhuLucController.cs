@@ -36,7 +36,7 @@ namespace hosman_api.Controllers
             if (listPhuLuc.Exists(p => p.NgayKetThuc.Ticks >= phuLucModel.NgayBatDau.Ticks))
                 return BadRequest("Phòng đã được thuê trong khoảng thời gian này");
 
-            phuLucModel.MaPhuLuc = Guid.NewGuid().ToString();
+            phuLucModel.MaPhuLuc = Guid.NewGuid().ToString().ToUpper();
             return _repoPhuLuc.PostPhuLuc(phuLucModel) ? Ok(phuLucModel) : BadRequest();
         }
 

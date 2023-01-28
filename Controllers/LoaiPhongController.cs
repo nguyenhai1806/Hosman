@@ -43,7 +43,7 @@ namespace hosman_api.Controllers
                     if (dv.TenLoai == newItem.TenLoai)
                         return BadRequest("Tên Loại Phòng đã trùng!");
                 }
-                newItem.MaLoai = Guid.NewGuid().ToString();
+                newItem.MaLoai = Guid.NewGuid().ToString().ToUpper();
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)
