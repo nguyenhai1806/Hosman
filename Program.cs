@@ -21,7 +21,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddCors(o => o.AddPolicy("LowCorsPolicy", builder =>
 {
-    builder.AllowAnyOrigin()
+    builder.WithOrigins("http://localhost:3000")
            .AllowAnyMethod()
            .AllowAnyHeader();
 }));

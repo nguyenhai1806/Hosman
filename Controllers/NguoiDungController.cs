@@ -1,4 +1,5 @@
-﻿using hosman_api.Interface;
+﻿using hosman_api.Helpers;
+using hosman_api.Interface;
 using hosman_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,13 +29,14 @@ namespace hosman_api.Controllers
         [HttpPost("/checkLogin")]
         public IActionResult checkLogin(Login login)
         {
-            NguoiDungModel nguoiDung = _repo.GetAllItems().Where(ng => ng.TaiKhoan == login.TaiKhoan && ng.MatKhau == login.MatKhau).FirstOrDefault();
-            return nguoiDung == null ? Ok(nguoiDung) : NotFound();
+            NguoiDungModel nguoiDung = _repo.GetAllItems().Where(ng => ng.Email == login.Email && ng.MatKhau == HashPassword.Hash(login.MatKhau)).FirstOrDefault();
+            return nguoiDung != null ? Ok(nguoiDung) : NotFound();
         }
         [HttpGet("{maNguoiDung}")]
         public IActionResult GetItemByID(string maNguoiDung)
         {
             NguoiDungModel item = _repo.GetItemByID(maNguoiDung);
+            if (item != null) item.MatKhau = null;
             return item == null ? NotFound() : Ok(item);
         }
 
@@ -44,6 +46,7 @@ namespace hosman_api.Controllers
             try
             {
                 newItem.MaNguoiDung = Guid.NewGuid().ToString();
+                newItem.MatKhau = HashPassword.Hash(newItem.MatKhau);
                 return _repo.PostNewItem(newItem) ? Ok(newItem) : BadRequest();
             }
             catch (Exception e)

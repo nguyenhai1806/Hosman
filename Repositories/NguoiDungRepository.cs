@@ -39,13 +39,13 @@ namespace hosman_api.Repositories
         {
             NguoiDung nguoiDung = _context.NguoiDungs.Find(updateItem.MaNguoiDung);
             nguoiDung.GioiTinh = updateItem.GioiTinh;
-            nguoiDung.SoDienThoai= updateItem.SoDienThoai;
+            nguoiDung.SoDienThoai = updateItem.SoDienThoai;
             nguoiDung.NgaySinh = updateItem.NgaySinh;
-            nguoiDung.DiaChi= updateItem.DiaChi;
+            nguoiDung.DiaChi = updateItem.DiaChi;
             nguoiDung.TenNguoiDung = updateItem.TenNguoiDung;
-            nguoiDung.TaiKhoan = updateItem.TaiKhoan;
-            nguoiDung.MatKhau = updateItem.MatKhau;
-            nguoiDung.Cccd= updateItem.Cccd;
+            nguoiDung.Email = updateItem.Email;
+            //nguoiDung.MatKhau = updateItem.MatKhau;
+            nguoiDung.Cccd = updateItem.Cccd;
             nguoiDung.AnhCccdtruoc = updateItem.AnhCccdtruoc;
             nguoiDung.AnhCccdsau = updateItem.AnhCccdsau;
             nguoiDung.NoiCap = updateItem.NoiCap;

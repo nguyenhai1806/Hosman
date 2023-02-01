@@ -27,9 +27,9 @@ public partial class NguoiDung
 
     public string? AnhCccdsau { get; set; }
 
-    public string? TaiKhoan { get; set; }
+    public string Email { get; set; } = null!;
 
-    public string? MatKhau { get; set; }
+    public string MatKhau { get; set; } = null!;
 
     public virtual ICollection<BinhLuan> BinhLuanChuTroNavigations { get; } = new List<BinhLuan>();
 

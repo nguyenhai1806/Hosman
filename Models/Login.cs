@@ -2,10 +2,10 @@
 {
     public class Login
     {
-        private string taiKhoan;
+        private string email;
         private string matKhau;
 
-        public string TaiKhoan { get => taiKhoan; set => taiKhoan = value; }
+        public string Email { get => email; set => email = value; }
         public string MatKhau { get => matKhau; set => matKhau = value; }
     }
 }
