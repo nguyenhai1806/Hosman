@@ -20,12 +20,16 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddCors(o => o.AddPolicy("LowCorsPolicy", builder =>
+var devCorsPolicy = "devCorsPolicy";
+builder.Services.AddCors(options =>
 {
-    builder.WithOrigins("http://localhost:3000")
-           .AllowAnyMethod()
-           .AllowAnyHeader();
-}));
+    options.AddPolicy(devCorsPolicy, builder => {
+        builder.WithOrigins("http://localhost:3000").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    //    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    //     builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
+    //     builder.SetIsOriginAllowed(origin => true);
+    });
+});
 //Register Repositories
 builder.Services.AddScoped<IDanhSachNguoiTroRepository, DanhSachNguoiTroRepository>();
 builder.Services.AddScoped<IBinhLuanRepository, BinhLuanRepository>();
@@ -50,11 +54,11 @@ builder.Services.AddScoped<IDichVuPhongRespository, DichVuPhongRespository>();
 builder.Services.AddScoped<IHoaDonRepository, HoaDonRepository>();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseCors("LowCorsPolicy");
+    app.UseCors(devCorsPolicy);
     app.UseSwagger();
     app.UseSwaggerUI();
 }

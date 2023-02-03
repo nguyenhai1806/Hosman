@@ -29,6 +29,7 @@ namespace hosman_api.Controllers
         [HttpPost("/checkLogin")]
         public IActionResult checkLogin(Login login)
         {
+            string matkhau = HashPassword.Hash(login.MatKhau);
             NguoiDungModel nguoiDung = _repo.GetAllItems().Where(ng => ng.Email == login.Email && ng.MatKhau == HashPassword.Hash(login.MatKhau)).FirstOrDefault();
             return nguoiDung != null ? Ok(nguoiDung) : NotFound();
         }
