@@ -6,25 +6,25 @@ INSERT INTO dbo.NguoiDung (MaNguoiDung, TenNguoiDung, CCCD, NgayCap, NoiCap, SoD
                            AnhCCCDTruoc, AnhCCCDSau, TaiKhoan, MatKhau)
 VALUES
     ('F5A5DD74-D4C0-4F42-B821-FE3F5047032A', N'Lê Võ Tuyết Vy', '068301005600', '12/08/2022', N'Cục cảnh sát',
-     '0945003260', '19/09/2001', 0, N'18B Bùi Xuân phái-phường Tây Thạnh-Quận Tân Phú-TP.Hồ Chí Minh', N'', N'', N'vy',
-     N'123');
+     '0945003260', '19/09/2001', 0, N'18B Bùi Xuân phái-phường Tây Thạnh-Quận Tân Phú-TP.Hồ Chí Minh', N'', N'', N'vy123@gmail.com',
+     N'202CB962AC59075B964B07152D234B70');
 
 INSERT INTO dbo.NguoiDung
 VALUES
     ('0EFC79B1-B8D7-4EF7-8722-46203B3802D3', N'Lê Văn Nam', '596886541594', '12/08/2022', N'Cục cảnh sát',
-     '0754748485', '22/08/1999', 1, N'Bến Tre', N'', N'', N'Nam', N'123');
+     '0754748485', '22/08/1999', 1, N'Bến Tre', N'', N'', N'nam123@gmail.com', N'202CB962AC59075B964B07152D234B70');
 INSERT INTO dbo.NguoiDung
 VALUES
     ('43D0D77E-4FF2-4558-9870-DB9EEC42714A', N'Nguyễn Thị Lệ Chi', '775349591875', '15/11/2021', N'Cục cảnh sát',
-     '0841485663', '15/08/2002', 0, N'Bình Định', N'', N'', N'Chi', N'123');
+     '0841485663', '15/08/2002', 0, N'Bình Định', N'', N'', N'chi123@gmail.com', N'202CB962AC59075B964B07152D234B70');
 INSERT INTO dbo.NguoiDung
 VALUES
     ('B0BCDAEF-BAD1-4415-BF27-C1B4F3E80214', N'Đoàn Văn An', '877573117844', '13/04/2022', N'Cục cảnh sát',
-     '0827744353', '04/08/1967', 1, N'Long An', N'', N'', N'An', N'123');
+     '0827744353', '04/08/1967', 1, N'Long An', N'', N'', N'an123@gmail.com', N'202CB962AC59075B964B07152D234B70');
 INSERT INTO dbo.NguoiDung
 VALUES
     ('54309E44-4174-482B-B940-48E47C1633F2', N'Đoàn Thị Ánh', '226499239473', '11/08/2021', N'Cục cảnh sát',
-     '0952776465', '08/08/1989', 0, N'Thủ Đức-TP.Hồ Chí Minh', N'', N'', N'Anh', N'123');
+     '0952776465', '08/08/1989', 0, N'Thủ Đức-TP.Hồ Chí Minh', N'', N'', N'anh123@gmail.com', N'202CB962AC59075B964B07152D234B70');
 
 -- Dịch Vụ
 INSERT INTO dbo.DichVu (MaDichVu, TenDichVu, DonViTinh)
