@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Hosman123Context>(option =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringDocker"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringCloud"));
 });
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

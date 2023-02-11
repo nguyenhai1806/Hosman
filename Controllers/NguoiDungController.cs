@@ -32,9 +32,9 @@ namespace hosman_api.Controllers
         {
             NguoiDungModel nguoiDung = _repo.GetItemLogin(login.Email, HashString.HashPassword(login.MatKhau));
             
-            
             if (nguoiDung!= null)
             {
+                nguoiDung.MatKhau = "";
                 string refeshToken = HashString.CreateRefeshToken();
                 if(_repo.UpdateRefeshToken(nguoiDung.MaNguoiDung,refeshToken)){
                     nguoiDung.RefeshToken = refeshToken;
@@ -51,9 +51,10 @@ namespace hosman_api.Controllers
 
             if (nguoiDung!= null)
             {
+                nguoiDung.MatKhau = "";
                 string newRefeshToken = HashString.CreateRefeshToken();
-                if(_repo.UpdateRefeshToken(nguoiDung.MaNguoiDung,refeshToken)){
-                    nguoiDung.RefeshToken = refeshToken;
+                if(_repo.UpdateRefeshToken(nguoiDung.MaNguoiDung,newRefeshToken)){
+                    nguoiDung.RefeshToken = newRefeshToken;
                 }
                 else
                     return BadRequest();
