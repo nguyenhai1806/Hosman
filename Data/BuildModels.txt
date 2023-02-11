@@ -1,4 +1,8 @@
-﻿Scaffold-DbContext "Data Source=localhost\SQLEXPRESS;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=123;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data
+﻿//Run on Package manager console
+Scaffold-DbContext "Data Source=localhost\SQLEXPRESS;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=123;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data
+
+//terminal
+dotnet ef dbcontext scaffold "Data Source=localhost,1433;Initial Catalog=Hosman123;TrustServerCertificate=True;User ID=sa;Password=Hosman123;" Microsoft.EntityFrameworkCore.SqlServer --output-dir Data -f
 
 Packages
 	microsoft.entityframeworkcore 7.0.0

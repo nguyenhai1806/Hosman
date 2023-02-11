@@ -31,6 +31,8 @@ public partial class NguoiDung
 
     public string MatKhau { get; set; } = null!;
 
+    public string? RefeshToken { get; set; }
+
     public virtual ICollection<BinhLuan> BinhLuanChuTroNavigations { get; } = new List<BinhLuan>();
 
     public virtual ICollection<BinhLuan> BinhLuanNguoiBinhLuanNavigations { get; } = new List<BinhLuan>();

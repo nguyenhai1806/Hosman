@@ -6,6 +6,11 @@ namespace hosman_api.Interface
     {
         public List<NguoiDungModel> GetAllItems();
 
+        public bool UpdateRefeshToken(string maNguoiDung, string refeshToken);
+
+        public NguoiDungModel GetItemLogin(string email, string password);
+
+        public NguoiDungModel GetItemByRefeshToken(string refeshToken);
 
         public bool PostNewItem(NguoiDungModel newItem);
 
@@ -17,5 +22,7 @@ namespace hosman_api.Interface
 
 
         public bool PutItem(NguoiDungModel updateItem);
+
+        
     }
 }

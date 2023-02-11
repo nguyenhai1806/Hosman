@@ -21,6 +21,16 @@ namespace hosman_api.Repositories
             List<NguoiDung> nguoiDungs = _context.NguoiDungs.ToList();
             return _mapper.Map<List<NguoiDungModel>>(nguoiDungs);
         }
+        public NguoiDungModel GetItemLogin(string email, string password)
+        {
+            NguoiDung nguoiDung = _context.NguoiDungs.Where(n => n.Email == email && n.MatKhau == password).FirstOrDefault();
+            return _mapper.Map<NguoiDungModel>(nguoiDung);
+        }
+        public NguoiDungModel GetItemByRefeshToken(string refeshToken)
+        {
+            NguoiDung nguoiDung = _context.NguoiDungs.Where(n => n.RefeshToken == refeshToken).FirstOrDefault();
+            return _mapper.Map<NguoiDungModel>(nguoiDung);
+        }
 
         public NguoiDungModel GetItemByID(string maNguoiDung)
         {
@@ -49,7 +59,7 @@ namespace hosman_api.Repositories
             nguoiDung.AnhCccdtruoc = updateItem.AnhCccdtruoc;
             nguoiDung.AnhCccdsau = updateItem.AnhCccdsau;
             nguoiDung.NoiCap = updateItem.NoiCap;
-            //_context.NguoiDungs.Update(nguoiDung);
+            // nguoiDung.RefeshToken = updateItem.RefeshToken;
             return _context.SaveChanges() > 0;
         }
 
@@ -65,6 +75,16 @@ namespace hosman_api.Repositories
             {
                 return false;
             }
+        }
+        public bool UpdateRefeshToken(string maNguoiDung, string refeshToken)
+        {
+            NguoiDung nguoiDung = _context.NguoiDungs.Find(maNguoiDung);
+            if (nguoiDung!= null)
+            {
+                nguoiDung.RefeshToken = refeshToken;
+                return _context.SaveChanges() > 0;
+            }
+            return false;
         }
     }
 }

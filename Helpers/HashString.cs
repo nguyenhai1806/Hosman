@@ -3,7 +3,7 @@ using System.Text;
 
 namespace hosman_api.Helpers
 {
-    public static class HashPassword
+    public static class HashString
     {
         private static string CreateMD5(string input)
         {
@@ -14,7 +14,10 @@ namespace hosman_api.Helpers
             }
             return Convert.ToHexString(hash);
         }
-        public static string Hash(string password)
+        public static string CreateRefeshToken(){
+            return CreateMD5(Guid.NewGuid().ToString());
+        }
+        public static string HashPassword(string password)
         {
             string newPass = password;
             return CreateMD5(newPass);
