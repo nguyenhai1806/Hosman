@@ -25,6 +25,12 @@ namespace hosman_api.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpGet("khutro/{maKhu}")]
+        public IActionResult GetItemByKhuTro(string maKhuTro)
+        {
+            List<PhongModel> list = _repo.GetItemsByKhuTro(maKhuTro);
+            return list == null ? NotFound() : Ok(list);
+        }
         [HttpGet("{maPhong}")]
         public IActionResult GetItemByID(string maPhong)
         {
@@ -37,7 +43,7 @@ namespace hosman_api.Controllers
         {
             try
             {
-                List<PhongModel> listPhong = _repo.GetPhongByKhuTro(newItem.MaKhuTro);
+                List<PhongModel> listPhong = _repo.GetItemsByKhuTro(newItem.MaKhuTro);
                 foreach (var p in listPhong)
                 {
                     if (p.TenPhong == newItem.TenPhong)
@@ -55,7 +61,7 @@ namespace hosman_api.Controllers
         [HttpPut("{maPhong}")]
         public IActionResult PutItem(string maPhong, PhongModel updateItem)
         {
-            List<PhongModel> listPhong = _repo.GetPhongByKhuTro(updateItem.MaKhuTro);
+            List<PhongModel> listPhong = _repo.GetItemsByKhuTro(updateItem.MaKhuTro);
             foreach (var p in listPhong)
             {
                 if (p.TenPhong == updateItem.TenPhong & p.MaPhong != updateItem.MaPhong)

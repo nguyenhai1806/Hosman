@@ -48,7 +48,6 @@ namespace hosman_api.Controllers
         public IActionResult checkRefeshToken(string refeshToken)
         {
             NguoiDungModel nguoiDung = _repo.GetItemByRefeshToken(refeshToken);
-
             if (nguoiDung!= null)
             {
                 nguoiDung.MatKhau = "";

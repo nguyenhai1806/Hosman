@@ -21,16 +21,14 @@ namespace hosman_api.Repositories
             List<Phong> phongs = _context.Phongs.ToList();
             return _mapper.Map<List<PhongModel>>(phongs);
         }
-
+        public List<PhongModel> GetItemsByKhuTro(string maKhuTro){
+            List<Phong> phongs = _context.Phongs.Where(p => p.MaKhuTro == p.MaKhuTro).ToList();
+            return _mapper.Map<List<PhongModel>>(phongs);
+        } 
         public PhongModel GetItemByID(string maPhong)
         {
             var phong = _context.Phongs.Find(maPhong);
             return _mapper.Map<PhongModel>(phong);
-        }
-
-        public List<PhongModel> GetPhongByKhuTro(string maKhuTro)
-        {
-            return _mapper.Map<List<PhongModel>>(_context.Phongs.Where(x => x.MaKhuTro == maKhuTro));
         }
 
         public bool PostNewItem(PhongModel newItem)
