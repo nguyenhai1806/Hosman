@@ -25,7 +25,7 @@ namespace hosman_api.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpGet("khutro/{maKhu}")]
+        [HttpGet("khutro/{maKhuTro}")]
         public IActionResult GetItemByKhuTro(string maKhuTro)
         {
             List<PhongModel> list = _repo.GetItemsByKhuTro(maKhuTro);
