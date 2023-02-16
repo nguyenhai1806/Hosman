@@ -13,17 +13,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Hosman123Context>(option =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringCloud"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("connectionStringSomee"));
 });
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 builder.Services.AddAutoMapper(typeof(Program));
+
 var devCorsPolicy = "devCorsPolicy";
+string cors = builder.Configuration.GetValue<string>("cors");
 builder.Services.AddCors(options =>
 {
+    
     options.AddPolicy(devCorsPolicy, builder => {
-        builder.WithOrigins("http://localhost:3000").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        builder.WithOrigins(cors).AllowAnyMethod().AllowAnyHeader();
     //    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
     //     builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
     //     builder.SetIsOriginAllowed(origin => true);

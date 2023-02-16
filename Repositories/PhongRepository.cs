@@ -22,7 +22,7 @@ namespace hosman_api.Repositories
             return _mapper.Map<List<PhongModel>>(phongs);
         }
         public List<PhongModel> GetItemsByKhuTro(string maKhuTro){
-            List<Phong> phongs = _context.Phongs.Where(p => p.MaKhuTro == p.MaKhuTro).ToList();
+            List<Phong> phongs = _context.Phongs.Where(p => p.MaKhuTro == maKhuTro).ToList();
             return _mapper.Map<List<PhongModel>>(phongs);
         } 
         public PhongModel GetItemByID(string maPhong)
